@@ -11,7 +11,7 @@
     }
 
     async function login(data){
-        const response = fetch('http://localhost:5039/api/users/login',
+        const response = fetch('https://localhost:7190/api/users/login',
         {
             method: 'POST',
             body: data,
@@ -19,18 +19,19 @@
             credentials: 'include',
             mode: 'cors'
         });
-        result = await response;
-        if(result['status'] == 200)
+        if((await response).ok)
         {
             data = JSON.parse(data);
-            console.log(data["username"]);
+            result = await(await response).json()
             sessionStorage.setItem("username", data['username']);
+            sessionStorage.setItem("token", result['token']);
             sessionStorage.setItem("loginStatus", 'true');
             loginCheck=1;
         }
         else
-            loginCheck=-1;  
-        };
+            loginCheck=-1;
+    }
+        //
 </script>
 
 

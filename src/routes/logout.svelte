@@ -5,6 +5,7 @@
     onMount(function(){
         sessionStorage.removeItem("username");
         sessionStorage.removeItem("loginStatus");
+        sessionStorage.removeItem("token");
         checker=true;
     })
 

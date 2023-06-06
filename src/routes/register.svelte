@@ -1,5 +1,6 @@
 <script>
     import Input from "../lib/input.svelte";
+    import Error from "./error.svelte";
     let registerCheck=0, data = {}, result;
     function tryToRegister(e)
     {
@@ -11,18 +12,21 @@
     }
 
     async function register(data){
-        const response = fetch('http://localhost:5039/api/users/register',
+        try
         {
-            method: 'POST',
-            body: data,
-            headers:{'Content-Type' : 'application/json'},
-        });
-        result = await response;
-        if(result['status'] == 200)
-            registerCheck=1;
-        else
-            registerCheck=-1;
-        };    
+            const response = fetch('https://localhost:7190/api/users/register',
+            {
+                method: 'POST',
+                body: data,
+                headers:{'Content-Type' : 'application/json'},
+            });
+            
+            if((await response).ok)
+                registerCheck=1;
+            else
+                registerCheck=-1;
+        } catch (a) {}
+    };    
 
 
 </script>
@@ -33,7 +37,7 @@
         <Input name="username" type="text" placeholder='LOGIN' style=''/>
         <Input name="email" type="email" placeholder='EMAIL' style=''/>
         <Input name="password" type="password" placeholder='PASSWORD' style=''/>
-        <button>LOG IN</button>
+        <button>REGISTER</button>
     </form>
 </main>
 
