@@ -1,6 +1,5 @@
 <script>
     import Input from "../lib/input.svelte";
-    import Error from "./error.svelte";
     let registerCheck=0, data = {}, result;
     function tryToRegister(e)
     {
@@ -18,6 +17,8 @@
             {
                 method: 'POST',
                 body: data,
+                credentials: 'include',
+                mode: 'cors',
                 headers:{'Content-Type' : 'application/json'},
             });
             

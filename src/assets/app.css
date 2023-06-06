@@ -89,6 +89,11 @@ body {
   color:rgb(142, 142, 142)
 }
 
+.account h1
+{
+  margin:0;
+}
+
 .account button
 {
   float:left;

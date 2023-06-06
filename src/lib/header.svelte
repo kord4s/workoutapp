@@ -5,6 +5,14 @@
     let username = sessionStorage.getItem("username");
     let check=false;
 
+    function removeSessionItems()
+    {
+        sessionStorage.removeItem("loginStatus");
+        sessionStorage.removeItem("username");
+        sessionStorage.removeItem("token");
+    }
+
+
     onMount(
     async function checkLoginStatus()
     {
@@ -30,13 +38,21 @@
             {
                 const data = await(await response).json();
                 if(data['userId'] != null)
+                {
+                    sessionStorage.setItem("userID", data['userId']);
                     check=true;
+                }
                 else
+                {
                     check=false;
+                    removeSessionItems();
+                }
+                    
             }
             else
             {
                 check=false;
+                removeSessionItems();
             }
         }
     })
@@ -47,7 +63,7 @@
 <main>
     <div class='header'>
         <a href='/#' >main site</a>
-        <a href='/#' >plans</a>
+        <a href='/#/plans' >plans</a>
         {#if (!check)}
         <a href='/#/register' >rejestracja</a>
         <a href='/#/login' >login</a>

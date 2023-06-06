@@ -12,10 +12,8 @@
     
 </script>
 
-
-<h1>logging out</h1>
 <div class='container'>
-    <svg class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+    <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
     <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
     </svg>
  </div>

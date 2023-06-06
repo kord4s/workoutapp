@@ -7,6 +7,7 @@
     import Header from './lib/header.svelte';
     import Logout from './routes/logout.svelte';
     import Profile from './routes/profile.svelte';
+    import Plans from './routes/plans.svelte';
 
   const routes = {
     "/" : Index,
@@ -14,7 +15,8 @@
     "/register" : Register,
     "/login" : Login,
     "/logout" : Logout,
-    "/profile" : Profile
+    "/profile" : Profile,
+    "/plans" : Plans
   }
 </script>
 
