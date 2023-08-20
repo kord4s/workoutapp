@@ -1,6 +1,8 @@
 <script>
     import Input from "../lib/input.svelte";
     let data = {}, emailChecker=0, passwordChecker=0, userID = sessionStorage.getItem("userID"), whichToChange;
+
+
     function changeUserData(e)
     {
         e.preventDefault()
@@ -13,7 +15,6 @@
             if(data["password"] === data["password_repeat"])
             {
                 formData.delete("password_repeat");
-                formData.append("email", "");
                 data = Object.fromEntries(formData.entries());
                 passwordChecker=1;
                 console.log(data);
@@ -30,7 +31,6 @@
             if(data["email"] === data["email_repeat"])
             {
                 formData.delete("email_repeat");
-                formData.append("password", "");
                 data = Object.fromEntries(formData.entries());
                 emailChecker=1;
             }
@@ -39,6 +39,7 @@
                 emailChecker=-1;
                 return;
             }
+            console.log(data);
         }
         data = JSON.stringify(data,null,2)
         tryToChangeData(data);
@@ -46,15 +47,20 @@
 
     async function tryToChangeData(data)
     {
-        const response = fetch('https://localhost:7190/api/users/change/'+userID,
+        let token = "Bearer "+sessionStorage.getItem("token");
+        let controller = 'https://localhost:7190/api/user/'+userID+'/change/'+whichToChange;
+        console.log(token);
+        const response = fetch(controller,
             {
                 method: 'PUT',
                 body: data,
-                credentials: 'include',
-                mode: 'cors',
                 headers: {
-                    'Content-Type' : 'application/json'
-                }
+                    'Content-Type' : 'application/json',
+                    'Authorization' : `${token}`
+                },
+                credentials: 'include',
+                mode: 'cors'
+                
             })
         if((await response).ok)
         {
@@ -72,8 +78,9 @@
         }
         else
         {
+            console.log((await response).status);
             switch(whichToChange)
-            {
+            { 
                 case "password":
                     passwordChecker=-1;
                     break;
@@ -97,7 +104,7 @@
     </form>
 
     {#if (emailChecker==1)}
-    <meta http-equiv="refresh" content="2; url='/#/'"/>
+    <meta http-equiv="refresh" content="20; url='/#/'"/>
     <p style="text-align: center;">sukces, poczekaj na przekierowanie</p>
     {:else if (emailChecker==-1)}
     <p style="text-align: center;">spróbuj ponownie</p>
@@ -114,7 +121,7 @@
 
     {#if (passwordChecker==1)}
     <p style="text-align: center;">sukces, poczekaj na przekierowanie</p>
-    <meta http-equiv="refresh" content="2; url='/#/'"/>
+    <meta http-equiv="refresh" content="20; url='/#/'"/>
     {:else if (passwordChecker==-1)}
     <p style="text-align: center;">spróbuj ponownie</p>
     {/if}

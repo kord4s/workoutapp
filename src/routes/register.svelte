@@ -13,7 +13,7 @@
     async function register(data){
         try
         {
-            const response = fetch('https://localhost:7190/api/users/register',
+            const response = fetch('https://localhost:7190/api/register',
             {
                 method: 'POST',
                 body: data,

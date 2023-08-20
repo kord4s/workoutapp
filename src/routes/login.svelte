@@ -11,7 +11,7 @@
     }
 
     async function login(data){
-        const response = fetch('https://localhost:7190/api/users/login',
+        const response = fetch('https://localhost:7190/api/login',
         {
             method: 'POST',
             body: data,

@@ -5,15 +5,18 @@
     
 
 <main>
+    <div class="container">
     {#if loginStatus != null}
-
-    zalogowany
+        <div class="welcome_logged"></div>
+        <div class="welcome_logged"></div>
 
     {:else}
-
-    niezalogowany
+        <div class="welcome_notlogged">
+            <h1>MAKE YOUR LIFE EASIER WITH HEALTHY LIFESTYLE</h1>
+            <h1><a href='/#/register'>REGISTER</a> OR <a href='/#/login'>LOG IN</a></h1>
+        </div>
 
     {/if}
-
+    </div>
 
 </main>

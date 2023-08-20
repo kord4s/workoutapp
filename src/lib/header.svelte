@@ -12,7 +12,7 @@
         sessionStorage.removeItem("token");
     }
 
-
+    
     onMount(
     async function checkLoginStatus()
     {
@@ -23,7 +23,7 @@
         let token = "Bearer "+sessionStorage.getItem("token");
         if(userIsLogged = "true")
         {
-            const response = fetch('https://localhost:7190/api/users/logged',
+            const response = fetch('https://localhost:7190/api/user/logged',
             {
                 method: 'GET',
                 credentials: 'include',
@@ -56,7 +56,7 @@
             }
         }
     })
-
+   
 
 </script>
 

@@ -51,6 +51,10 @@ body {
   background-color: white;
   text-align: center;
   color: rgba(0, 0, 0, 0.849);
+  font-size:2vw;
+  font-weight: bold;
+  text-transform: uppercase;
+  overflow: hidden;
   transition:0.5s;
   padding-top:2vh;
   padding-bottom:2vh;
@@ -110,16 +114,68 @@ body {
 
 h1
 {
-  width:100vw;
+  width:100%;
   margin-top:15vh;
   text-align: center;
 }
 
 .container
 {
+  float:left;
   width: 100%;
-  margin:0;
+  margin:5vh 0 0;
 }
+
+.welcome_logged
+{
+  width: 40%;
+  margin: 0 5% 0;
+  background-color: white;
+}
+
+.exercise
+{
+  width:100%;
+  background-color:rgba(151, 147, 147, 0.547);
+}
+
+.welcome_notlogged
+{
+  padding:1.5% 0 1.5%;
+  background-color: white;
+  border-radius: 45px 45px;
+  margin: 15% 10% 0;
+  width: 80%;
+  transition: 0.5s;
+}
+
+.welcome_notlogged:hover
+{
+  background-color: white;
+}
+
+.welcome_notlogged h1
+{
+  margin:3% 0 1.5%;
+  font-size: 2.5vw;
+}
+
+
+.welcome_notlogged h1 a
+{
+  margin:0;
+  font-size: 3vw;
+  text-decoration: none;
+  color:rgba(0, 0, 0, 0.849);
+  transition: 0.5s;
+  text-transform: uppercase;
+
+}
+.welcome_notlogged h1 a:hover
+{
+  color:#F7C223;
+}
+
 
 
 .spinner {
