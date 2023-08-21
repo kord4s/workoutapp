@@ -31,7 +31,6 @@
         else
             loginCheck=-1;
     }
-        //
 </script>
 
 

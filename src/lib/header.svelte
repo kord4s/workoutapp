@@ -10,6 +10,7 @@
         sessionStorage.removeItem("loginStatus");
         sessionStorage.removeItem("username");
         sessionStorage.removeItem("token");
+        sessionStorage.removeItem("userID");
     }
 
     
@@ -64,6 +65,7 @@
     <div class='header'>
         <a href='/#' >main site</a>
         <a href='/#/plans' >plans</a>
+        <a href='/#/diet'>diet</a>
         {#if (!check)}
         <a href='/#/register' >rejestracja</a>
         <a href='/#/login' >login</a>

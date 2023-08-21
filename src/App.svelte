@@ -8,6 +8,9 @@
     import Logout from './routes/logout.svelte';
     import Profile from './routes/profile.svelte';
     import Plans from './routes/plans.svelte';
+    import Diet from './routes/diet.svelte';
+    import CreatePlan from './routes/createPlan.svelte';
+    import AddExercises from './routes/addExercises.svelte';
 
   const routes = {
     "/" : Index,
@@ -16,7 +19,10 @@
     "/login" : Login,
     "/logout" : Logout,
     "/profile" : Profile,
-    "/plans" : Plans
+    "/plans" : Plans,
+    "/plans/create" : CreatePlan,
+    "/plans/days" : AddExercises,
+    "/diet" : Diet
   }
 </script>
 

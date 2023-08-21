@@ -8,7 +8,6 @@
         e.preventDefault()
         const formData = new FormData(e.target);
         data = Object.fromEntries(formData.entries());
-        //
         if(formData.has("password"))
         {
             whichToChange="password";
@@ -17,7 +16,6 @@
                 formData.delete("password_repeat");
                 data = Object.fromEntries(formData.entries());
                 passwordChecker=1;
-                console.log(data);
             }
             else
             {
@@ -49,7 +47,6 @@
     {
         let token = "Bearer "+sessionStorage.getItem("token");
         let controller = 'https://localhost:7190/api/user/'+userID+'/change/'+whichToChange;
-        console.log(token);
         const response = fetch(controller,
             {
                 method: 'PUT',
@@ -104,7 +101,7 @@
     </form>
 
     {#if (emailChecker==1)}
-    <meta http-equiv="refresh" content="20; url='/#/'"/>
+    <meta http-equiv="refresh" content="2; url='/#/'"/>
     <p style="text-align: center;">sukces, poczekaj na przekierowanie</p>
     {:else if (emailChecker==-1)}
     <p style="text-align: center;">spróbuj ponownie</p>
@@ -121,7 +118,7 @@
 
     {#if (passwordChecker==1)}
     <p style="text-align: center;">sukces, poczekaj na przekierowanie</p>
-    <meta http-equiv="refresh" content="20; url='/#/'"/>
+    <meta http-equiv="refresh" content="2; url='/#/'"/>
     {:else if (passwordChecker==-1)}
     <p style="text-align: center;">spróbuj ponownie</p>
     {/if}
