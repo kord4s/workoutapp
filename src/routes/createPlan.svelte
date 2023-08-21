@@ -1,9 +1,11 @@
 <script>
+    import { is_empty } from "svelte/internal";
+
     let counter, daysChecker=false, name;
 
     function submitDays()
     {
-        if(counter>0 && counter<=7)
+        if(counter>0 && counter<=7 && name != null )
         daysChecker=true;
         sessionStorage.setItem("daysCount", counter);
         sessionStorage.setItem("Name", name);
@@ -19,7 +21,7 @@
     </div>
     {:else if (daysChecker)}
     <div>
-        <h1><a href='/#/plans/days'>LETS PROCEED</a></h1>
+        <h1><a href='/#/plans/create/days'>LETS PROCEED</a></h1>
     </div>
     {/if}
     

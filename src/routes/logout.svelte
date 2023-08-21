@@ -3,9 +3,7 @@
     let checker=false;
     
     onMount(function(){
-        sessionStorage.removeItem("username");
-        sessionStorage.removeItem("loginStatus");
-        sessionStorage.removeItem("token");
+        sessionStorage.clear();
         checker=true;
     })
 
