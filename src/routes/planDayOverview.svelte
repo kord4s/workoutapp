@@ -43,6 +43,7 @@ function showModalOnce(exerciseId)
 
 
 <main>
+<h6><a href='/#/plans/{workoutPlanID}/overview'>BACK</a></h6>
 {#if (exercises.length == 0 && checker == -1)}
     <div class='container'>
         <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
@@ -54,6 +55,7 @@ function showModalOnce(exerciseId)
     <h1>IT IS TIME TO ADD SOME EXERCISES</h1>
     <h1><a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}/exercise/add'>CLICK HERE</a></h1>
 {:else}
+    <h1><a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}/exercise/add'>ADD MORE EXERCISES</a></h1>
     {#each exercises as exercise}
         <Modal bind:showModal bind:clicked bind:exerciseId={exercise.userExerciseId}>
             <h2>{exercise.exerciseName}</h2>

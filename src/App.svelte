@@ -17,6 +17,7 @@
     import AddingExerciseAdditionaldata from './routes/addingExercise_additionaldata.svelte';
     import ModifyingExercise from './routes/modifyingExercise.svelte';
     import DeletingExercise from './routes/deletingExercise.svelte';
+    import AddNextDay from './routes/addNextDay.svelte';
 
 
   const routes = {
@@ -27,6 +28,7 @@
     "/logout" : Logout,
     "/profile" : Profile,
     "/plans" : Plans,
+    "/plans/addNextDay" : AddNextDay,
     "/plans/create/plan" : CreatePlan,
     "/plans/create/days" : CreateDays,
     "/plans/:workoutPlanId/overview" : overviewPlan,

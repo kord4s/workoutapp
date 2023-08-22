@@ -87,9 +87,9 @@ async function tryToAddExercise(e)
     <h1>{exercise['exerciseName']}</h1>
     <div>{exercise['description']}</div>
     <form on:submit|preventDefault={tryToAddExercise}>
-        <InputNumber style='' type='number' placeholder='sets' name='NumberOfSeries' min='1' max=''/>
-        <InputNumber style='' type='number' placeholder='repetitions' name='NumberOfRepeats' min='1' max=''/>
-        <InputNumber style='' type='number' placeholder='load' name='NumberOfLoad' min='0' max=''/>
+        <InputNumber style='' type='number' placeholder='sets' name='NumberOfSeries' min='1' max='' value={null}/>
+        <InputNumber style='' type='number' placeholder='repetitions' name='NumberOfRepeats' min='1' max='' value={null}/>
+        <InputNumber style='' type='number' placeholder='load' name='NumberOfLoad' min='0' max='' value={null}/>
         <button>ADD</button>
     </form>
     {:else if (checker==2)}
