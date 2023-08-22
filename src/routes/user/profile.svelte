@@ -1,5 +1,5 @@
 <script>
-    import Input from "../lib/input.svelte";
+    import Input from "../../lib/input.svelte";
     let data = {}, emailChecker=0, passwordChecker=0, userID = sessionStorage.getItem("userID"), whichToChange;
 
 

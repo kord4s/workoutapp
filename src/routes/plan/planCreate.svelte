@@ -1,6 +1,4 @@
 <script>
-    import { is_empty } from "svelte/internal";
-
     let counter, daysChecker=false, name;
 
     function submitDays()

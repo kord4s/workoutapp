@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import Modal from "../lib/modal.svelte";
+    import Modal from "../../lib/modal.svelte";
     
 
 export let params = {};

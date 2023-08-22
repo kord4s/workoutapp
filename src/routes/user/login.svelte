@@ -1,5 +1,5 @@
 <script>
-    import Input from "../lib/input.svelte";
+    import Input from "../../lib/input.svelte";
     let loginCheck=0, data={}, result;
     function tryToLogin(e)
     {

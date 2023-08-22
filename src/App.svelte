@@ -1,25 +1,27 @@
 <script>
   import Router from 'svelte-spa-router';
-  import Index from './routes/index.svelte';
-  import Register from './routes/register.svelte';
-  import Login from './routes/login.svelte';
-  import Error from './routes/error.svelte';
-    import Header from './lib/header.svelte';
-    import Logout from './routes/logout.svelte';
-    import Profile from './routes/profile.svelte';
-    import Plans from './routes/plans.svelte';
+    import Index from './routes/index.svelte';
+    import Error from './routes/error.svelte';
+    import Register from './routes/user/register.svelte';
+    import Login from './routes/user/login.svelte';
+    import Logout from './routes/user/logout.svelte';
+    import Profile from './routes/user/profile.svelte';
+    import Plans from './routes/plan/plans.svelte';
+    import PlanCreate from './routes/plan/planCreate.svelte';
+    import PlanCreateCreateDays from './routes/plan/planCreate_createDays.svelte';
+    import PlanOverview from './routes/plan/planOverview.svelte';
+    import PlanDelete from './routes/plan/planDelete.svelte';
+    import PlanNewDays from './routes/plan/planNewDays.svelte';
+    import PlanDayOverview from './routes/plan/planDayOverview.svelte';
+    import PlanDayDelete from './routes/plan/planDayDelete.svelte';
+    import PlanDayAddExercise from './routes/plan/planDay_addExercise.svelte';
+    import PlanDayAddExerciseAdditionalData from './routes/plan/planDay_addExercise_additionalData.svelte';
+    import PlanDayModifyExercise from './routes/plan/planDay_modifyExercise.svelte';
+    import PlanDayExerciseDelete from './routes/plan/planDay_exerciseDelete.svelte';
     import Diet from './routes/diet.svelte';
-    import CreatePlan from './routes/createPlan.svelte';
-    import overviewPlan from './routes/overviewPlan.svelte';
-    import CreateDays from './routes/CreateDays.svelte';
-    import PlanDayOverview from './routes/planDayOverview.svelte';
-    import AddingExercise from './routes/addingExercise.svelte';
-    import AddingExerciseAdditionaldata from './routes/addingExercise_additionaldata.svelte';
-    import ModifyingExercise from './routes/modifyingExercise.svelte';
-    import DeletingExercise from './routes/deletingExercise.svelte';
-    import AddNextDay from './routes/addNextDay.svelte';
-    import DeletePlanDay from './routes/deletePlanDay.svelte';
-    import DeletePlan from './routes/deletePlan.svelte';
+    import Header from './lib/header.svelte';
+    
+
 
 
   const routes = {
@@ -30,18 +32,18 @@
     "/logout" : Logout,
     "/profile" : Profile,
     "/plans" : Plans,
-    "/plans/addNextDay" : AddNextDay,
-    "/plans/create/plan" : CreatePlan,
-    "/plans/create/days" : CreateDays,
-    "/plans/:workoutPlanId/overview" : overviewPlan,
-    "/plans/:workoutPlanId/delete" : DeletePlan,
-    "/plans/:workoutPlanId/overview/newDay" : AddNextDay,
+    /*"/plans/addNextDay" : AddNextDay,*/
+    "/plans/create/plan" : PlanCreate,
+    "/plans/create/days" : PlanCreateCreateDays,
+    "/plans/:workoutPlanId/overview" : PlanOverview,
+    "/plans/:workoutPlanId/delete" : PlanDelete,
+    "/plans/:workoutPlanId/overview/newDay" : PlanNewDays,
     "/plans/:workoutPlanId/overview/:workoutDayId" : PlanDayOverview,
-    "/plans/:workoutPlanId/overview/:workoutDayId/delete" : DeletePlanDay,
-    "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add" : AddingExercise,
-    "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add/:exerciseId/info" : AddingExerciseAdditionaldata,
-    "/plans/:workoutPlanId/overview/:workoutDayId/exercise/modify/:exerciseId" : ModifyingExercise,
-    "/plans/:workoutPlanId/overview/:workoutDayId/exercise/delete/:exerciseId" : DeletingExercise,
+    "/plans/:workoutPlanId/overview/:workoutDayId/delete" : PlanDayDelete,
+    "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add" : PlanDayAddExercise,
+    "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add/:exerciseId/info" : PlanDayAddExerciseAdditionalData,
+    "/plans/:workoutPlanId/overview/:workoutDayId/exercise/modify/:exerciseId" : PlanDayModifyExercise,
+    "/plans/:workoutPlanId/overview/:workoutDayId/exercise/delete/:exerciseId" : PlanDayExerciseDelete,
     "/diet" : Diet
   }
 </script>

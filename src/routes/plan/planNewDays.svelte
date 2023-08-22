@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import Modal from "../lib/modal.svelte";
+    import Modal from "../../lib/modal.svelte";
 
 export let params = {}
 let workoutPlanID = params.workoutPlanId;
@@ -174,7 +174,7 @@ async function tryToAddNewDay()
         <h4>which day you want to use as a base?</h4>
         <form>
             <fieldset>
-                <legend>CHOOSE BODY PART</legend>
+                <legend>CHOOSE BASE DAY AS A TEMPLATE</legend>
                 {#each baseDayTemplates as day, index}
                     <input type='radio' value={index} id='{String(index)}' bind:group={userSelected} />
                     <label for='index'>{day.workoutDayId}</label>
