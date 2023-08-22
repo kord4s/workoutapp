@@ -32,6 +32,7 @@
     "/plans/create/plan" : CreatePlan,
     "/plans/create/days" : CreateDays,
     "/plans/:workoutPlanId/overview" : overviewPlan,
+    "/plans/:workoutPlanId/overview/newDay" : AddNextDay,
     "/plans/:workoutPlanId/overview/:workoutDayId" : PlanDayOverview,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add" : AddingExercise,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add/:exerciseId/info" : AddingExerciseAdditionaldata,
