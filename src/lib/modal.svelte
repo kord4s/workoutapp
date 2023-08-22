@@ -1,9 +1,11 @@
 <script>
 	export let showModal; // boolean
-    export let exerciseId;
+	export let clicked;
+	export let exerciseId
 	let dialog; // HTMLDialogElement
-
-	$: if (dialog && showModal) dialog.showModal();
+	console.log(exerciseId);
+	console.log(clicked);
+	$: if (dialog && showModal && clicked === exerciseId) dialog.showModal();
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->

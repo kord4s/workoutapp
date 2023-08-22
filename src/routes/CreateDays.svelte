@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     let checker = -1;
+    let workoutPlanID
     onMount(async function(){
 
         let daysCount = sessionStorage.getItem("daysCount");
@@ -29,7 +30,7 @@
         if((await response).ok)
         {
             let result = await(await response).json()
-            let workoutPlanID = result;
+            workoutPlanID = result;
             sessionStorage.setItem("workoutPlanId", workoutPlanID);
             let calendarID=[];
             let workoutDaysID=[];
@@ -153,13 +154,12 @@
 </script>
 
 <main>
+    <div class='container'>
+        <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
+    </div>
     {#if (checker == 1)}
-        <h1><a href="/#/plans/overview">LETS PROCEED</a></h1>
-    {:else}
-        <div class='container'>
-            <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-            <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-            </svg>
-        </div>
+        <meta http-equiv="refresh" content="2; url='/#/plans/{workoutPlanID}/overview'"/>
     {/if}
 </main>

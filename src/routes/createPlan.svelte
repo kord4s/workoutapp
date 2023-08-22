@@ -21,7 +21,12 @@
     </div>
     {:else if (daysChecker)}
     <div>
-        <h1><a href='/#/plans/create/days'>LETS PROCEED</a></h1>
+        <div class='container'>
+            <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+         </div>
+        <meta http-equiv="refresh" content="2; url='/#/plans/create/days'"/>
     </div>
     {/if}
     

@@ -15,6 +15,9 @@
     import PlanDayOverview from './routes/planDayOverview.svelte';
     import AddingExercise from './routes/addingExercise.svelte';
     import AddingExerciseAdditionaldata from './routes/addingExercise_additionaldata.svelte';
+    import ModifyingExercise from './routes/modifyingExercise.svelte';
+    import DeletingExercise from './routes/deletingExercise.svelte';
+
 
   const routes = {
     "/" : Index,
@@ -24,12 +27,14 @@
     "/logout" : Logout,
     "/profile" : Profile,
     "/plans" : Plans,
-    "/plans/:workoutPlanId/create/plan" : CreatePlan,
-    "/plans/:workoutPlanId/create/days" : CreateDays,
+    "/plans/create/plan" : CreatePlan,
+    "/plans/create/days" : CreateDays,
     "/plans/:workoutPlanId/overview" : overviewPlan,
     "/plans/:workoutPlanId/overview/:workoutDayId" : PlanDayOverview,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add" : AddingExercise,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add/:exerciseId/info" : AddingExerciseAdditionaldata,
+    "/plans/:workoutPlanId/overview/:workoutDayId/exercise/modify/:exerciseId" : ModifyingExercise,
+    "/plans/:workoutPlanId/overview/:workoutDayId/exercise/delete/:exerciseId" : DeletingExercise,
     "/diet" : Diet
   }
 </script>

@@ -10,6 +10,7 @@ let workoutDayId = params.workoutDayId;
 let userSelected;
 let checker = -1;
 let showModal = false;
+let clicked = -1;
 onMount(async function(){
     
     let token = 'Bearer '+sessionStorage.getItem("token");
@@ -54,6 +55,13 @@ async function searchForExercises()
         checker=1;
     }
 }
+
+function showModalOnce(exerciseId)
+{
+    showModal=true;
+    clicked = exerciseId;
+}
+
 </script>
 
 <main>
@@ -70,12 +78,11 @@ async function searchForExercises()
     {#if checker==1}
         {#each exercises as exercise}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <h4 on:click={() => (showModal = true)}>{exercise.exerciseName}</h4>
-            <Modal bind:showModal exerciseId>
+            <h4 on:click={() => (showModalOnce(exercise.exerciseId))}>{exercise.exerciseName}</h4>
+            <Modal bind:showModal bind:clicked bind:exerciseId={exercise.exerciseId}>
                 <h2>{exercise.exerciseName}</h2>
                 <h5>{exercise.description}</h5>
                 <hr>
-                <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <h4><a href='#/plans/{workoutPlanID}/overview/{workoutDayId}/exercise/add/{exercise.exerciseId}/info'>ADD TO MY WORKOUT PLAN</a></h4>
             </Modal>
         {/each}
