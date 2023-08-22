@@ -18,6 +18,8 @@
     import ModifyingExercise from './routes/modifyingExercise.svelte';
     import DeletingExercise from './routes/deletingExercise.svelte';
     import AddNextDay from './routes/addNextDay.svelte';
+    import DeletePlanDay from './routes/deletePlanDay.svelte';
+    import DeletePlan from './routes/deletePlan.svelte';
 
 
   const routes = {
@@ -32,8 +34,10 @@
     "/plans/create/plan" : CreatePlan,
     "/plans/create/days" : CreateDays,
     "/plans/:workoutPlanId/overview" : overviewPlan,
+    "/plans/:workoutPlanId/delete" : DeletePlan,
     "/plans/:workoutPlanId/overview/newDay" : AddNextDay,
     "/plans/:workoutPlanId/overview/:workoutDayId" : PlanDayOverview,
+    "/plans/:workoutPlanId/overview/:workoutDayId/delete" : DeletePlanDay,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add" : AddingExercise,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add/:exerciseId/info" : AddingExerciseAdditionaldata,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/modify/:exerciseId" : ModifyingExercise,

@@ -44,6 +44,7 @@ function showModalOnce(exerciseId)
 
 <main>
 <h6><a href='/#/plans/{workoutPlanID}/overview'>BACK</a></h6>
+<h6><a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}/delete'>DELETE</a></h6>
 {#if (exercises.length == 0 && checker == -1)}
     <div class='container'>
         <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
