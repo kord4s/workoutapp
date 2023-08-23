@@ -51,24 +51,23 @@ onMount(async function()
 </script>
 
 <main>
-
+    <div class='plans'>
     {#if (WPCount == -1)}
-        <div class='container'>
-            <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-            <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-            </svg>
-        </div>
+            <div class='container'>
+                <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                </svg>
+            </div>
     {:else if (WPCount == 0)}
-    <div>
-        <h1>START YOUR FITNESS JOURNEY RIGHT NOW!</h1>
-        <h1><a href='/#/plans/create/plan'>CLICK HERE TO CREATE CREATE YOUR PLAN</a></h1>
-    </div>
+    <a href='/#/plans/create/plan'>
+        START YOUR FITNESS JOURNEY RIGHT NOW!
+        CLICK HERE TOCREATE CREATE YOUR PLAN
+    </a>
     {:else}
-    <div>
         {#each WorkoutPlans as plan, index}
-        <h1><a href='/#/plans/{plan.workoutPlanId}/overview'>{plan.name}</a></h1>
+        <a href='/#/plans/{plan.workoutPlanId}/overview'>{plan.name}</a>
      {/each}
-    </div>
+     <a href='/#/plans/create/plan'>CLICK HERE TO CREATE CREATE NEW PLAN</a>
     {/if}
-
+</div>
 </main>

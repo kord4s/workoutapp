@@ -29,10 +29,14 @@ onMount(async function(){
 </script>
 
 <main>
-    <h6><a href='/#/plans'>BACK</a></h6>
-    <h6><a href='/#/plans/{workoutPlanID}/overview/newDay'>ADD NEXT DAY</a></h6>
-    <h6><a href='/#/plans/{workoutPlanID}/delete'>DELETE</a></h6>
+    <div class='navigator'>
+    <a href='/#/plans'>BACK</a>
+    <a href='/#/plans/{workoutPlanID}/overview/newDay'>ADD NEXT DAY</a>
+    <a href='/#/plans/{workoutPlanID}/delete'>DELETE</a>
+    </div>
+    <div class="plans">
     {#each workoutdays as days, index}
-        <h1><a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">{days.workoutDayId} day {index+1}</a></h1>
+        <a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">{days.workoutDayId} day {index+1}</a>
     {/each}
+    </div>
 </main>

@@ -13,10 +13,25 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   box-sizing:border-box;
+  overflow:hidden;
+  
 }
+
+
 
 #app{
   width: 100vw;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  color:rgba(0, 0, 0, 0.849);
 }
 
 
@@ -33,7 +48,6 @@ body {
 .header
 {
   top:0;
-  overflow:hidden;
   position:sticky;
   min-width: 100vw;
   text-decoration: none;
@@ -169,6 +183,121 @@ h1
   color:#F7C223;
 }
 
+
+.plans
+{
+  width:100%
+}
+
+.plans a
+{
+  float:left;
+  display:block;
+  padding:3% 0;
+  background-color: white;
+  border-radius: 45px 45px;
+  margin: 5vh 25vw 0 25vw;
+  min-width: 50vw;
+  transition: 0.5s;
+  text-align: center;
+  font-weight: bolder;
+  font-size:2vw;
+}
+
+.plans a:hover
+{
+  background-color:rgb(212, 212, 212);
+  transition: 0.5s;
+}
+
+.plans a::target-text:hover
+{
+  color:white;
+  transition: 0.5s;
+}
+
+.plans form
+{
+  float:left;
+  display:block;
+  padding:3% 0;
+  background-color: white;
+  border-radius: 45px 45px;
+  margin: 20vh 25vw;
+  min-width: 50vw;
+  transition: 0.5s;
+}
+
+.plans input
+{
+  padding: 2% 0;
+  border-radius: 25px;
+  text-align:center;
+  color:white;
+  width:50%;
+  margin: 1% 25%;
+  transition: 0.5s;
+}
+
+.plans button
+{
+  width:20%;
+  margin:1% 40% 0;
+  padding:1.5% 0 1.5%;
+  border-radius: 15px;
+  background-color: white;
+  color:rgb(142, 142, 142);
+  font-weight: bolder;
+  transition: 0.5s;
+}
+
+.plans button:hover
+{
+  background-color: rgba(199, 198, 198, 0.716);
+  transition: 0.5s;
+}
+
+.plans h1
+{
+  text-align: center;
+  margin:2.5% 0;
+}
+
+.plans h1:hover
+{
+  color:rgba(0, 0, 0, 0.849);
+}
+
+.plans input::placeholder
+{
+  text-align: center;
+  color:rgb(142, 142, 142)
+}
+
+.navigator
+{
+  width:100%;
+  overflow: hidden;
+}
+
+.navigator a
+{
+  display:block;
+  color:white;
+  float:left;
+  margin: 2.5% 0;
+  width:33.3%;
+  background-color:rgb(135, 135, 135);
+  overflow:hidden;
+  text-align: center;
+  padding:15px 0 ;
+  transition: 0.5s;
+}
+.navigator a:hover
+{
+  background-color:rgb(160, 160, 160);
+  transition: 0.5s;
+}
 
 
 .spinner {
