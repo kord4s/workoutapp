@@ -9,7 +9,7 @@ let workoutDayId = params.workoutDayId;
 let exerciseId = params.exerciseId;
 let exercise = [];
 let data;
-let checker=1;
+let checker=0;
 onMount(async function(){
     let token = 'Bearer '+sessionStorage.getItem("token");
     let userID = sessionStorage.getItem("userID");
@@ -26,6 +26,7 @@ onMount(async function(){
     if((await exerciseResponse).ok)
     {
         exercise = await(await exerciseResponse).json();
+        checker = 1;
     }
 })
 
@@ -84,21 +85,28 @@ async function tryToAddExercise(e)
 
 <main>
     {#if (checker==1)}
-    <h1>{exercise['exerciseName']}</h1>
-    <div>{exercise['description']}</div>
-    <form on:submit|preventDefault={tryToAddExercise}>
-        <InputNumber style='' type='number' placeholder='sets' name='NumberOfSeries' min='1' max='' value={null}/>
-        <InputNumber style='' type='number' placeholder='repetitions' name='NumberOfRepeats' min='1' max='' value={null}/>
-        <InputNumber style='' type='number' placeholder='load' name='NumberOfLoad' min='0' max='' value={null}/>
-        <button>ADD</button>
-    </form>
+    <div class='addingExercise'>
+        <div class='exerciseContainer'>
+            <fieldset>
+            <legend>{exercise['exerciseName']}</legend>
+            <p>{exercise['description']}</p>
+            </fieldset>
+        </div>
+        <div class='exerciseContainer'>
+            <form on:submit|preventDefault={tryToAddExercise}>
+                <InputNumber style='' type='number' placeholder='sets' name='NumberOfSeries' min='1' max='' value={null}/>
+                <InputNumber style='' type='number' placeholder='repetitions' name='NumberOfRepeats' min='1' max='' value={null}/>
+                <InputNumber style='' type='number' placeholder='load' name='NumberOfLoad' min='0' max='' value={null}/>
+                <button>ADD TO PLAN</button>
+            </form>
+        </div>
+    </div>
     {:else if (checker==2)}
-        <h1>SUCCESS, REDIRECTING</h1>
         <div class='container'>
             <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
             <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
             </svg>
          </div>
-         <meta http-equiv="refresh" content="2; url='/#/plans/{workoutPlanID}/overview/{workoutDayId}'"/>
+         <meta http-equiv="refresh" content="1; url='/#/plans/{workoutPlanID}/overview/{workoutDayId}'"/>
     {/if}
 </main>

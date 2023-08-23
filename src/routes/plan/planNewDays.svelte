@@ -35,8 +35,7 @@ onMount(async function()
     })
     if((await baseDayCheckerResponse).ok)
     {
-        checker=1;
-        var baseDays = await(await baseDayCheckerResponse).json();
+        //var baseDays = await(await baseDayCheckerResponse).json();
         const baseDaysResponse = fetch("https://localhost:7190/api/"+userID+"/workoutplans/"+workoutPlanID+"/workoutdays/getBaseDays",
         {
         method: 'GET',
@@ -163,7 +162,9 @@ async function tryToAddNewDay()
 </script>
 
 <main>
-    <h6><a href='/#/plans/{workoutPlanID}/overview'>BACK</a></h6>
+    <div class='navigator'>
+        <a href='/#/plans/{workoutPlanID}/overview'>BACK</a>
+    </div>
     {#if checker == 0}
     <div class='container'>
         <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
@@ -171,43 +172,55 @@ async function tryToAddNewDay()
         </svg>
     </div>
     {:else if checker == 1}
-        <h4>which day you want to use as a base?</h4>
-        <form>
-            <fieldset>
-                <legend>CHOOSE BASE DAY AS A TEMPLATE</legend>
-                {#each baseDayTemplates as day, index}
-                    <input type='radio' value={index} id='{String(index)}' bind:group={userSelected} />
-                    <label for='index'>{day.workoutDayId}</label>
-                {/each}
-            </fieldset>
-        </form>
-
-        {#if userSelected!=null}
-                {#each baseDayTemplates[userSelected].userExercises as exercise}
-                <!-- svelte-ignore a11y-click-events-have-key-events -->
-                    <h4 on:click={() => (showModalOnce(exercise.userExerciseId))}>{exercise.exerciseName}</h4>        
-                    <Modal bind:showModal bind:clicked bind:exerciseId={exercise.userExerciseId}>
-                        <h2>{exercise.exerciseName}</h2>
-                        <h5>{exercise.description}</h5>
-                        <hr>
-                    </Modal>
-                {/each}
-                <button on:click={tryToAddNewDay}>ADD</button>
-            <h4>YOU MAY ADD OR REMOVE EXERCISES LATER</h4>
-        {/if}
+        <div class='addingExercise'>
+            <div class='exerciseContainer'>
+                <form>
+                    <fieldset>
+                        <legend>CHOOSE BASE DAY AS A TEMPLATE</legend>
+                        {#each baseDayTemplates as day, index}
+                            <div class='radio'>
+                                <input type='radio' value={index} id='{String(index)}' bind:group={userSelected} />
+                                <label for='{String(index)}'>DAY {index+1}</label>
+                            </div>
+                        {/each}
+                    </fieldset>
+                </form>
+            </div>
+       
+            <div class='exerciseContainer'>
+                {#if userSelected!=null}
+                    <div class='exerciseToAdd'>
+                        <p>YOU MAY EDIT EXERCISES LATER</p>
+                    </div>
+                    {#each baseDayTemplates[userSelected].userExercises as exercise}
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <div class='exerciseToAdd' on:click={() => (showModalOnce(exercise.userExerciseId))}>
+                        <p>{exercise.exerciseName}</p>        
+                        <Modal bind:showModal bind:clicked bind:exerciseId={exercise.userExerciseId}>
+                            <h2>{exercise.exerciseName}</h2>
+                            <h5>{exercise.description}</h5>
+                        </Modal>
+                    </div>
+                    {/each}
+                    <button on:click|preventDefault={tryToAddNewDay}>ADD</button>
+                {/if}
+            </div>
+        </div>
 
     {:else if checker == -1}
-        <h1>YOU NEED TO FINISH YOUR BASE DAYS TO</h1>
-        <h1>ADD NEW WORKOUT DAYS</h1>
-    {:else if checker == -2}
-        <h1>TODAYS DATE IS NOT AVAILABLE</h1>
-        <h1>MODIFY YOUR LATEST DAY TO KEEP TRACK OF EXERCISING</h1>
-    {:else if checker == 2}
-        <div class='container'>
-            <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-            <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-            </svg>
+        <div class='welcome'>
+            <h1>YOU NEED TO FINISH YOUR BASE DAYS TO</h1>
+            <h1>ADD NEW WORKOUT DAYS</h1>
         </div>
-        <meta http-equiv="refresh" content="2; url='/#/plans/{workoutPlanID}/overview/{newDayId}'"/>           
+    {:else if checker == -2}
+        <div class='welcome'>
+            <h1>TODAYS DATE IS NOT AVAILABLE</h1>
+            <h1>MODIFY YOUR LATEST DAY TO KEEP TRACK OF EXERCISING</h1>
+        </div>
+    {:else if checker == 2}
+        <div class='welcome'>
+            <h1>REDIRECTING TO NEW DAY</h1>
+        </div>
+        <meta http-equiv="refresh" content="1; url='/#/plans/{workoutPlanID}/overview/{newDayId}'"/>           
     {/if}
 </main>

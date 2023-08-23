@@ -27,6 +27,7 @@
 </script>
 
 <main>
+    <h6><a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a></h6>
     {#if checker == -1}
         <h1> ARE YOU SURE?</h1>
         <button on:click = {deleteUserExercise}></button>

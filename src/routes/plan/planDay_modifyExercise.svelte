@@ -62,6 +62,7 @@ async function tryToAddExercise(e)
 </script>
 
 <main>
+    <h6><a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a></h6>
     {#if (checker == 0)}
         <div class='container'>
             <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">

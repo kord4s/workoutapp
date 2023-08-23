@@ -17,7 +17,6 @@
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div on:click|stopPropagation>
 		<slot name="header" />
-		<hr />
 		<slot />
 		<!-- svelte-ignore a11y-autofocus -->
 	</div>
@@ -25,17 +24,19 @@
 
 <style>
 	dialog {
-		max-width: 32em;
+		background-color: rgb(92, 90, 90);
+		max-width: 45%;
 		border-radius: 0.2em;
 		border: none;
-		padding: 0;
+		padding:0;
+		color:black;
+		border-radius: 40px;
 	}
+
 	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.3);
-	}
-	dialog > div {
-		padding: 1em;
-	}
+		background: rgba(0, 0, 0, 0.6);
+		transition: 0.5;
+	}	
 	dialog[open] {
 		animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
@@ -58,4 +59,5 @@
 			opacity: 1;
 		}
 	}
+
 </style>

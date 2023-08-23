@@ -17,8 +17,9 @@
     onMount(
     async function checkLoginStatus()
     {
-        if(sessionStorage.getItem("token") == null)
+        if(sessionStorage.getItem("token") === null || sessionStorage.getItem("loginStatus") === null)
         {
+            sessionStorage.clear();
             return;
         }
         let token = "Bearer "+sessionStorage.getItem("token");

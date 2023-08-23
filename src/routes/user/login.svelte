@@ -35,7 +35,7 @@
 
 
 <main>
-    <form class='account' on:submit={tryToLogin}>
+    <form class='account' on:submit|preventDefault={tryToLogin}>
         <Input name="username" type="text" placeholder='LOGIN' style=''/>
         <Input name="password" type="password" placeholder='PASSWORD' style=''/>
         <button>LOG IN</button>

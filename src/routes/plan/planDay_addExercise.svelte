@@ -65,29 +65,41 @@ function showModalOnce(exerciseId)
 </script>
 
 <main>
-    <form>
-        <fieldset>
-            <legend>CHOOSE BODY PART</legend>
-            {#each bodyparts as part, index}
-                <input type='radio' value='{part}' id='{String(index)}' bind:group={userSelected} on:change={searchForExercises}/>
-                <label for='index'>{part}</label>
-            {/each}
-        </fieldset>
-    </form>
-
-    {#if checker==1}
-        {#each exercises as exercise}
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <h4 on:click={() => (showModalOnce(exercise.exerciseId))}>{exercise.exerciseName}</h4>
-            <Modal bind:showModal bind:clicked bind:exerciseId={exercise.exerciseId}>
-                <h2>{exercise.exerciseName}</h2>
-                <h5>{exercise.description}</h5>
-                <hr>
-                <h4><a href='#/plans/{workoutPlanID}/overview/{workoutDayId}/exercise/add/{exercise.exerciseId}/info'>ADD TO MY WORKOUT PLAN</a></h4>
-            </Modal>
-        {/each}
-    {/if}
-
+    <div class='navigator'>
+        <a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a>
+    </div>
+    <div class='addingExercise'>
+        <div class='exerciseContainer'>
+            <form>
+                <fieldset>
+                    <legend>CHOOSE BODY PART</legend>
+                        {#each bodyparts as part, index}
+                            <div class='radio'>
+                                <input type='radio' value='{part}' id='{String(index)}' bind:group={userSelected} on:change={searchForExercises}/>
+                                <label for='{String(index)}'>{part}</label>
+                            </div>
+                        {/each}
+                </fieldset>
+            </form>
+        </div>
+        <div class='exerciseContainer'>
+            {#if checker==1}
+                {#each exercises as exercise}
+                    <div class='exerciseToAdd' on:click={() => (showModalOnce(exercise.exerciseId))}>
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <p >{exercise.exerciseName}<p>
+                    <Modal bind:showModal bind:clicked bind:exerciseId={exercise.exerciseId}>
+                        <h2>{exercise.exerciseName}</h2>
+                        <h5>{exercise.description}</h5>
+                        <div class='modalNavigator'>
+                            <a href='#/plans/{workoutPlanID}/overview/{workoutDayId}/exercise/add/{exercise.exerciseId}/info'>ADD TO MY WORKOUT PLAN</a>
+                        </div>
+                    </Modal>
+                    </div>
+                {/each}
+            {/if}
+        </div>
+    </div>
 
 
 

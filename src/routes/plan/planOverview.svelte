@@ -3,7 +3,7 @@ import { onMount } from "svelte";
 export let params = {}
 let workoutPlanID = params.workoutPlanId;
 let workoutdays=[];
-let name = sessionStorage.getItem("Name");
+let waiter = 0;
 onMount(async function(){
 
     let token = 'Bearer '+sessionStorage.getItem("token");
@@ -21,7 +21,7 @@ onMount(async function(){
     if((await workoutDaysResponse).ok)
     {
         workoutdays = await(await workoutDaysResponse).json();
-        console.log(workoutdays);
+        waiter = 1;
     }
     
     
@@ -35,8 +35,10 @@ onMount(async function(){
     <a href='/#/plans/{workoutPlanID}/delete'>DELETE</a>
     </div>
     <div class="plans">
-    {#each workoutdays as days, index}
-        <a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">{days.workoutDayId} day {index+1}</a>
-    {/each}
+        {#if waiter == 1}
+            {#each workoutdays as days, index}
+                <a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">DAY {index+1}</a>
+            {/each}
+        {/if}
     </div>
 </main>

@@ -64,28 +64,34 @@ async function deleteWorkoutDay(){
 </script>
 
 <main>
-    <h6><a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a></h6>
+    <div class='navigator'>
+        <a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a>
+    </div>
+    
     {#if deleted_check == 1}
+        <div class="welcome">
         <h1>PLAN DAY DELETED</h1>
+        </div>
         <meta http-equiv="refresh" content="2; url='/#/plans/{workoutPlanID}/overview/'"/> 
     {:else if deleted_check == -1}
+        <div class="welcome">
         <h1>PLAN DAY NOT DELETED</h1>
+        </div>
         <meta http-equiv="refresh" content="2; url='/#/plans/{workoutPlanID}/overview/'"/> 
     {/if}
 
     {#if checker == 1}
+        <div class="welcome">
         <h1>ARE YOU SURE YOU WANT TO DELETE THIS DAY?</h1>
         <h1>IT CANNOT BE RESTORED!</h1>
-        <button on:click={deleteWorkoutDay}></button>
+        <button on:click|preventDefault={deleteWorkoutDay}>DELETE</button>
+        </div>
+        
     {:else if checker == -1}
+        <div class="welcome">
         <h1>YOU CANNOT DELETE BASE DAY!</h1>
         <h1>IF YOU WANT SHORTER PLAN, DELETE THIS ONE AND CREATE NEW</h1>
-        <meta http-equiv="refresh" content="4; url='/#/plans/{workoutPlanID}/overview/'"/> 
-    {:else}
-        <div class='container'>
-            <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-            <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-            </svg>
         </div>
+        <meta http-equiv="refresh" content="1; url='/#/plans/{workoutPlanID}/overview/'"/> 
     {/if}
 </main>

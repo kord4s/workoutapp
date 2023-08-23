@@ -13,10 +13,10 @@
 <main>
     {#if (!daysChecker)}
     <div class='plans'>
-        <form>
-            <input placeholder='how many base days?' type='number' min='1' max='7' bind:value={counter}>
-            <input placeholder="name of your workout plan" type='text' max='30' bind:value={name}>
-            <button on:click={submitDays}>CREATE</button>
+        <form on:submit|preventDefault={submitDays}>
+            <input placeholder='how many base days?' type='number' min='1' max='7' bind:value={counter} required>
+            <input placeholder="name of your workout plan" type='text' max='30' bind:value={name} required>
+            <button>CREATE</button>
         </form>
     </div>
     {:else if (daysChecker)}

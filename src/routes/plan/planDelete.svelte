@@ -30,25 +30,29 @@
 </script>
 
 <main>
-    <h6><a href='/#/plans/'>BACK</a></h6>
+    <div class='navigator'>
+        <a href='/#/plans/'>BACK</a>
+    </div>
     {#if deleted_check == 1}
+        <div class='welcome'>
         <h1>PLAN DELETED</h1>
-        <meta http-equiv="refresh" content="2; url='/#/plans/'"/> 
-    {:else if deleted_check == -1}
+        <h1>REDIRECTING</h1>
+        </div>
+        <meta http-equiv="refresh" content="1; url='/#/plans/'"/> 
+        {:else if deleted_check == -1}
+        <div class='welcome'>
         <h1>PLAN DELETED</h1>
-        <meta http-equiv="refresh" content="2; url='/#/plans/'"/> 
+        <h1>REDIRECTING</h1>
+        </div> 
+        <meta http-equiv="refresh" content="1; url='/#/plans/'"/>
     {/if}
 
     {#if checker == 1}
-        <h1>ARE YOU SURE YOU WANT TO DELETE THIS PLAN?</h1>
-        <h1>IT WILL DESTROY ALSO ALL YOUR TRACKED DAYS</h1>
-        <h1>IT CANNOT BE RESTORED!</h1>
-        <button on:click={deleteWorkoutPlan}></button>
-    {:else}
-        <div class='container'>
-            <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-            <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-            </svg>
+        <div class='welcome'>
+            <h1>ARE YOU SURE YOU WANT TO DELETE THIS PLAN?</h1>
+            <h1>IT WILL DESTROY ALSO ALL YOUR TRACKED DAYS</h1>
+            <h1>IT CANNOT BE RESTORED!</h1>
+            <button on:click|preventDefault={deleteWorkoutPlan}>DELETE</button>
         </div>
     {/if}
 </main>
