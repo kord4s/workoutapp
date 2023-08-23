@@ -3,8 +3,6 @@
 	export let clicked;
 	export let exerciseId
 	let dialog; // HTMLDialogElement
-	//console.log(exerciseId);
-	//console.log(clicked);
 	$: if (dialog && showModal && clicked === exerciseId) dialog.showModal();
 </script>
 

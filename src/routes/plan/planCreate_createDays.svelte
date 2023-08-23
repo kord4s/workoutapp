@@ -35,7 +35,6 @@
             let calendarID=[];
             let workoutDaysID=[];
             let calendarDayID=[];
-            console.log(workoutPlanID);
             //checking if calendar is already existing
             const calendarResponse = fetch("https://localhost:7190/api/"+userID+"/calendars/count",
             {
@@ -66,7 +65,6 @@
                     {
                         let calendarCreationResult = await(await gettingCalendarResponse).json()
                         calendarID = calendarCreationResult[0]['calendarId'];
-                        console.log(calendarID);   
                     }
                 }
                 else
@@ -85,8 +83,7 @@
                     if((await calendarCreationResponse).ok)
                     {
                         let calendarCreationResult = await(await calendarCreationResponse).json()
-                        calendarID = calendarCreationResult;
-                        console.log(calendarID);   
+                        calendarID = calendarCreationResult;  
                     }
                 }
             }
@@ -113,8 +110,7 @@
                 if((await creatingCalendarDaysResponse).ok)
                 {
                     let calendarDayCreationResult = await(await creatingCalendarDaysResponse).json()
-                    calendarDayID[i] = calendarDayCreationResult;
-                    console.log(calendarDayID[i]);      
+                    calendarDayID[i] = calendarDayCreationResult;  
                 }
             }
 
@@ -127,7 +123,7 @@
                 formCalendarData.append("CalendarDayId", calendarDayID[i]);
                 let calendarData = Object.fromEntries(formCalendarData.entries());
                 let calendarDataJSON = JSON.stringify(calendarData,null,2);
-                console.log(calendarDataJSON);
+
                 const creatingWorkoutDaysResponse = fetch("https://localhost:7190/api/"+userID+"/workoutplans/"+workoutPlanID+"/workoutdays/create",
                 {
                     method: 'POST',
@@ -143,8 +139,7 @@
                 {
                     let creatingWorkoutDaysResult = await(await creatingWorkoutDaysResponse).json()
                     let WorkoutDayID = creatingWorkoutDaysResult;
-                    workoutDaysID[i]=WorkoutDayID
-                    console.log(WorkoutDayID);   
+                    workoutDaysID[i]=WorkoutDayID 
                 }
             }            
         }

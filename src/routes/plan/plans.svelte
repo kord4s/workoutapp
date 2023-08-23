@@ -8,8 +8,6 @@
 onMount(async function()
     {
         let userID = sessionStorage.getItem("userID");
-        console.log(userID);
-        console.log(sessionStorage.getItem('loginStatus'));
         if(sessionStorage.getItem("userID") === null)
         {
             checker = -1;
@@ -70,7 +68,7 @@ onMount(async function()
             {:else if (WPCount == 0)}
                 <a href='/#/plans/create/plan'>
                     <h4>START YOUR FITNESS JOURNEY RIGHT NOW!</h4>
-                    <h4>CLICK HERE TO CREATE CREATE YOUR PLAN</h4>
+                    <h4>CLICK HERE TO CREATE YOUR PLAN</h4>
                 </a>
             {:else}
                 {#if waiter == 1}

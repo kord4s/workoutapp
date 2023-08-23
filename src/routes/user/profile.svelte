@@ -37,7 +37,6 @@
                 emailChecker=-1;
                 return;
             }
-            console.log(data);
         }
         data = JSON.stringify(data,null,2)
         tryToChangeData(data);
@@ -75,7 +74,6 @@
         }
         else
         {
-            console.log((await response).status);
             switch(whichToChange)
             { 
                 case "password":

@@ -40,7 +40,6 @@ async function tryToAddExercise(e)
     const formData = new FormData(e.target);
     data = Object.fromEntries(formData.entries());
     data = JSON.stringify(data,null,2)
-    console.log(data);
     const editingUserExercise = fetch("https://localhost:7190/api/"+userID+"/workoutplans/"+workoutPlanID+"/workoutdays/"+workoutDayId+"/exercises/"+userExerciseId+"/editNumbers",
         {
             method: 'PUT',
@@ -54,7 +53,6 @@ async function tryToAddExercise(e)
         })
         if((await editingUserExercise).ok)
         {
-            console.log("OK");
             checker=2;
         }
 }

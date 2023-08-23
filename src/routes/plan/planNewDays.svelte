@@ -13,7 +13,6 @@ let newDayId;
 let calendarID;
 let date = new Date();
 let currentDate = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`
-console.log(currentDate);
 onMount(async function()
 {
     if(!(await checkIfDayIsAvailable()))
@@ -152,10 +151,6 @@ async function tryToAddNewDay()
         {
             newDayId = await(await addWorkoutDayResponse).json();
             checker=2;
-        }
-        else
-        {
-            console.log(await(await addWorkoutDayResponse).json());
         }
 }
 

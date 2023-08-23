@@ -41,7 +41,6 @@ async function tryToAddExercise(e)
     const formData = new FormData(e.target);
     data = Object.fromEntries(formData.entries());
     data = JSON.stringify(data,null,2)
-    console.log(data);
     try{
     const addUserExerciseResponse = fetch("https://localhost:7190/api/"+userID+"/workoutplans/"+workoutPlanID+"/workoutdays/"+workoutDayId+"/exercises/getsamples/"+exerciseId,
     {
@@ -57,10 +56,8 @@ async function tryToAddExercise(e)
     if((await addUserExerciseResponse).ok)
     {
         addingResult = await(await addUserExerciseResponse).json();
-        console.log(addingResult);
     }
     }catch(e){
-        console.log(e);
         throw(e);
     }
     const editingUserExercise = fetch("https://localhost:7190/api/"+userID+"/workoutplans/"+workoutPlanID+"/workoutdays/"+workoutDayId+"/exercises/"+addingResult['userExerciseId']+"/editNumbers",
@@ -76,7 +73,6 @@ async function tryToAddExercise(e)
         })
         if((await editingUserExercise).ok)
         {
-            console.log("OK");
             checker=2;
         }
 }
