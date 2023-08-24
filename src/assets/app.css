@@ -160,6 +160,11 @@ h1
   transition: 0.5s;
 }
 
+.welcome + a > div
+{
+  margin-top: 1vh !important;
+}
+
 .welcome:hover
 {
   background-color: white;
@@ -350,6 +355,24 @@ h1
   padding:15px 0 ;
   transition: 0.5s;
 }
+
+.wider
+{
+  width: 25% !important;
+}
+
+.narrower
+{
+  width: 50% !important;
+}
+
+.narrowest
+{
+  width:100% !important;
+}
+
+
+
 .navigator a:hover
 {
   background-color:rgb(160, 160, 160);
@@ -358,10 +381,14 @@ h1
 
 .navigator p
 {
+  box-sizing: border-box;
+  border: rgb(135, 135, 135) 1px solid;
+  border-style:inset;
+  display:block;
   color:white;
   float:left;
   margin: 0;
-  width:33.3%;
+  width:33.3333333%;
   background-color:rgb(135, 135, 135);
   overflow:hidden;
   text-align: center;

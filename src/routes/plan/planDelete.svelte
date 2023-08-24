@@ -31,7 +31,7 @@
 
 <main>
     <div class='navigator'>
-        <a href='/#/plans/'>BACK</a>
+        <a class='narrowest' href='/#/plans/'>BACK</a>
     </div>
     {#if deleted_check == 1}
         <div class='welcome'>

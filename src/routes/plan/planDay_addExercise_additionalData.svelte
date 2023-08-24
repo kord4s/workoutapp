@@ -80,6 +80,9 @@ async function tryToAddExercise(e)
 </script>
 
 <main>
+    <div class='navigator'>
+        <a class='narrowest' href='/#/plans/{workoutPlanID}/overview/{workoutDayId}/exercise/add'>BACK</a>
+    </div>
     {#if (checker==1)}
     <div class='addingExercise'>
         <div class='exerciseContainer'>

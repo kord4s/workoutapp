@@ -66,7 +66,7 @@ function showModalOnce(exerciseId)
 
 <main>
     <div class='navigator'>
-        <a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a>
+        <a class='narrowest' href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a>
     </div>
     <div class='addingExercise'>
         <div class='exerciseContainer'>
@@ -92,7 +92,7 @@ function showModalOnce(exerciseId)
                         <h2>{exercise.exerciseName}</h2>
                         <h5>{exercise.description}</h5>
                         <div class='modalNavigator'>
-                            <a href='#/plans/{workoutPlanID}/overview/{workoutDayId}/exercise/add/{exercise.exerciseId}/info'>ADD TO MY WORKOUT PLAN</a>
+                            <a class='narrowest' href='#/plans/{workoutPlanID}/overview/{workoutDayId}/exercise/add/{exercise.exerciseId}/info'>ADD TO MY WORKOUT PLAN</a>
                         </div>
                     </Modal>
                     </div>
@@ -100,7 +100,6 @@ function showModalOnce(exerciseId)
             {/if}
         </div>
     </div>
-
 
 
 </main>

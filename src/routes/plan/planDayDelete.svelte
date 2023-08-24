@@ -65,7 +65,7 @@ async function deleteWorkoutDay(){
 
 <main>
     <div class='navigator'>
-        <a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a>
+        <a class='narrowest' href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a>
     </div>
     
     {#if deleted_check == 1}

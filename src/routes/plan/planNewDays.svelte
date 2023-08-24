@@ -158,7 +158,7 @@ async function tryToAddNewDay()
 
 <main>
     <div class='navigator'>
-        <a href='/#/plans/{workoutPlanID}/overview'>BACK</a>
+        <a class='narrowest' href='/#/plans/{workoutPlanID}/overview'>BACK</a>
     </div>
     {#if checker == 0}
     <div class='container'>

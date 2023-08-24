@@ -11,6 +11,9 @@
 </script>
 
 <main>
+    <div class='navigator'>
+        <a class='narrowest' href='/#/plans/'>BACK</a>
+    </div>
     {#if (!daysChecker)}
     <div class='plans'>
         <form on:submit|preventDefault={submitDays}>
