@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { push } from "svelte-spa-router";
+    import AddProduct from "./addProduct.svelte";
     export let params = {}
 
 $: if(params.day)
@@ -138,16 +139,6 @@ async function getMeals(){
         }
 }
 
-function previousDay()
-{
-    window.location.href=`/#/diet/${yesterday['day']}/${yesterday['month']+1}/${yesterday['year']}`
-}
-
-function nextDay()
-{
-    window.location.href=`/#/diet/${tomorrow['day']}/${tomorrow['month']+1}/${tomorrow['year']}` 
-}
-
 function reloadData()
 {
     day = params.day;
@@ -170,13 +161,33 @@ function reloadData()
 
 <main>
     <div class='navigator'>
-        <a href="/#/diet/{yesterday['day']}/{yesterday['month']+1}/{yesterday['year']}">PREVIOUS DAY</a>
-        <a href='/#/diet/{calendarDayID}/addMeal'>ADD NEXT MEAL</a>
-        <a href="/#/diet/{tomorrow['day']}/{tomorrow['month']+1}/{tomorrow['year']}">NEXT DAY</a>
+        <a href="/#/diet/overview/{yesterday['day']}/{yesterday['month']+1}/{yesterday['year']}">PREVIOUS DAY</a>
+        <a href='/#/diet/{calendarID}/{calendarDayID}/addMeal'>ADD NEXT MEAL</a>
+        <a href="/#/diet/overview/{tomorrow['day']}/{tomorrow['month']+1}/{tomorrow['year']}">NEXT DAY</a>
     </div>
     {#if checker == 1}
         {#if waiter == 1 && meals.length > 0}
-            git
+            <div class='meals'>
+            {#each meals as meal}
+                <div>
+                    <p class='title'>{meal.mealName}</p>
+                    <div class='subtitle'>
+                        <p>protein: {meal.totalProtein}g</p>
+                        <p>fat: {meal.totalFat}g</p>
+                        <p>carbs: {meal.totalCarbs}g</p>
+                        <p>energy: {meal.totalKcal}kcal</p>
+                    </div>
+                    {#each meal.products as product}
+                        <a class='product' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/{product.productId}/modify'>{product.productName}:{product.productWeight}g P:{product.productProtein}g F:{product.productFat}g C:{product.productCarbs}g</a>
+                    {/each}
+                    <div class='modalNavigator'>
+                        <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/addProduct'>ADD PRODUCT</a>
+                        <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/modifyMeal'>MODIFY NAME</a>
+                        <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/deleteMeal'>DELETE MEAL</a>
+                    </div>
+                </div>
+            {/each}
+            </div>
         {:else if waiter == 1 && meals.length == 0}
             <div class="welcome">
                 <h1>DAY IS EMPTY</h1>

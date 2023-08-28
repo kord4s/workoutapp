@@ -23,6 +23,12 @@
     import AnotherDay from './routes/diet/anotherDay.svelte';
     import AddMeal from './routes/diet/addMeal.svelte';
     import AddProduct from './routes/diet/addProduct.svelte';
+    import NewProduct from './routes/diet/newProduct.svelte';
+    import AddProductAdditionalData from './routes/diet/addProduct_additionalData.svelte';
+    import DecodeData from './routes/diet/decodeData.svelte';
+    import DeleteMeal from './routes/diet/deleteMeal.svelte';
+    import ModifyMeal from './routes/diet/modifyMeal.svelte';
+    import ModifyProduct from './routes/diet/modifyProduct.svelte';
     
 
 
@@ -46,10 +52,16 @@
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add/:exerciseId/info" : PlanDayAddExerciseAdditionalData,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/modify/:exerciseId" : PlanDayModifyExercise,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/delete/:exerciseId" : PlanDayExerciseDelete,
-    "/diet" : Diet,
-    "/diet/:day/:month/:year" : AnotherDay,
-    "/diet/:calendarDayId/addMeal" : AddMeal,
-    "/diet/:calendarDayId/addProduct" :AddProduct
+    "/diet/overview" : Diet,
+    "/diet/overview/:day/:month/:year" : AnotherDay,
+    "/diet/:calendarId/:calendarDayId/addMeal" : AddMeal,
+    "/diet/:calendarId/:calendarDayId/:mealId/deleteMeal" : DeleteMeal,
+    "/diet/:calendarId/:calendarDayId/:mealId/modifyMeal" : ModifyMeal,
+    "/diet/:calendarId/:calendarDayId/:mealId/addProduct" :AddProduct,
+    "/diet/:calendarId/:calendarDayId/:mealId/addProduct/:productId/additionalData" : AddProductAdditionalData,
+    "/diet/:calendarId/:calendarDayId/:mealId/:productId/modify" : ModifyProduct,
+    "/diet/:calendarId/:calendarDayId/:mealId/addProduct/newProduct" : NewProduct,
+    "/diet/decodeCalendarDay/:calendarId/:calendarDayId" : DecodeData
   }
 </script>
 

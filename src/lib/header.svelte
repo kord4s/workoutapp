@@ -66,7 +66,7 @@
     <div class='header'>
         <a href='/#' >main site</a>
         <a href='/#/plans' >plans</a>
-        <a href='/#/diet'>diet</a>
+        <a href='/#/diet/overview'>diet</a>
         {#if (!check)}
         <a href='/#/register' >rejestracja</a>
         <a href='/#/login' >login</a>

@@ -23,6 +23,7 @@
 <style>
 	dialog {
 		background-color: rgb(92, 90, 90);
+		min-width:35%;
 		max-width: 45%;
 		border-radius: 0.2em;
 		border: none;

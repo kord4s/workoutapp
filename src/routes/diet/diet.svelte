@@ -1,6 +1,5 @@
 <script>
     import { onMount } from "svelte";
-    import { push } from "svelte-spa-router";
 let checker;
 let calendarID;
 let date = new Date();
@@ -11,7 +10,6 @@ let yesterday = {day : date.getDate(), month : date.getMonth(), year : date.getF
 date.setDate(date.getDate()+2);
 let tomorrow = {day : date.getDate(), month : date.getMonth(), year : date.getFullYear() };
 date.setDate(date.getDate()-1);
-console.log(yesterday, currentDate, tomorrow);
 let calendarDayID;
 let meals = []
 let waiter
@@ -120,6 +118,7 @@ onMount(async function(){
         if((await gettingMealsResponse).status)
         {
             meals = await(await gettingMealsResponse).json();
+            console.log(meals);
             waiter = 1;
         }
 })
@@ -129,13 +128,27 @@ onMount(async function(){
 
 <main>
     <div class='navigator'>
-        <a href="/#/diet/{yesterday['day']}/{yesterday['month']+1}/{yesterday['year']}">PREVIOUS DAY</a>
-        <a href='/#/diet/{calendarDayID}/addMeal'>ADD NEXT MEAL</a>
-        <a href="/#/diet/{tomorrow['day']}/{tomorrow['month']+1}/{tomorrow['year']}">NEXT DAY</a>
+        <a href="/#/diet/overview/{yesterday['day']}/{yesterday['month']+1}/{yesterday['year']}">PREVIOUS DAY</a>
+        <a href='/#/diet/{calendarID}/{calendarDayID}/addMeal'>ADD NEXT MEAL</a>
+        <a href="/#/diet/overview/{tomorrow['day']}/{tomorrow['month']+1}/{tomorrow['year']}">NEXT DAY</a>
     </div>
     {#if checker == 1}
         {#if waiter == 1 && meals.length > 0}
-            git
+            <div class='meals'>
+            {#each meals as meal}
+                <div>
+                    <p class='title'>{meal.mealId}</p>
+                    {#each meal.products as product}
+                        <p class='product'>{product.productName}</p>
+                    {/each}
+                    <div class='modalNavigator'>
+                        <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/addProduct'>ADD PRODUCT</a>
+                        <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/modifyMeal'>MODIFY NAME</a>
+                        <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/deleteMeal'>DELETE MEAL</a>
+                    </div>
+                </div>
+            {/each}
+            </div>
         {:else if waiter == 1 && meals.length == 0}
             <div class="welcome">
                 <h1>DAY IS EMPTY</h1>
