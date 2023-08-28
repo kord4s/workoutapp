@@ -4,6 +4,8 @@ export let params = {}
 let workoutPlanID = params.workoutPlanId;
 let workoutdays=[];
 let waiter = 0;
+let incrementDays=0;
+let daysCount;
 let isPrefered;
 
 onMount(async function(){
@@ -24,6 +26,22 @@ onMount(async function(){
     {
         workoutdays = await(await workoutDaysResponse).json();
         waiter = 1;
+    }
+
+    const workoutPlanResponse = fetch("https://localhost:7190/api/"+userID+"/workoutplans/"+workoutPlanID,
+    {
+        method: 'GET',
+        headers:{
+            'Content-Type' : 'application/json',
+            'Authorization' : `${token}`
+        },
+        credentials: 'include',
+        mode: 'cors'              
+    })
+    if((await workoutPlanResponse).ok)
+    {
+        let workoutPlan = await(await workoutPlanResponse).json();
+        daysCount = workoutPlan['daysCount'];
     }
 
     const preferedPlanResponse = fetch("https://localhost:7190/api/"+userID+"/workoutplans/isPrefered/"+workoutPlanID,
@@ -89,6 +107,20 @@ async function unsetAsPrefered()
     }
 }
 
+function nextDays()
+{
+    if(incrementDays*10+daysCount < workoutdays.slice(daysCount,incrementDays*10+daysCount))
+        incrementDays++;
+}
+
+function previousDays()
+{
+    if(incrementDays>=0)
+    {
+        incrementDays--;
+    }
+}
+
 </script>
 
 <main>
@@ -105,12 +137,37 @@ async function unsetAsPrefered()
             <p on:click={setAsPrefered} class='wider'>SET AS PREFERED</p>
         {/if}
         </div>
-        <div class="plans">
-            {#if waiter == 1}
-                {#each workoutdays as days, index}
-                    <a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">DAY {index+1}</a>
-                {/each}
-            {/if}
-        </div>
+        {#if workoutdays.length == daysCount}
+            <div class="plans">
+                {#if waiter == 1}
+                    {#each workoutdays as days, index}
+                        <a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">BASE DAY {index+1}</a>
+                    {/each}
+                {/if}
+            </div>
+        {:else}
+            <div class='adddingExercise'>
+                <div class='planOverview'>
+                    <p class='exerciseToAdd'>BASE DAYS</p>
+                    {#each workoutdays.slice(0,daysCount) as days, index}
+                        <a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">BASE DAY {index+1}</a>                
+                    {/each}
+                </div>
+                <div class='planOverview'>
+                        <p class='exerciseToAdd'>TRACKING DAYS</p>
+                    {#if (workoutdays.slice(daysCount, workoutdays.slice.length).length < 10)}
+                        {#each workoutdays.slice(daysCount, workoutdays.length).reverse() as days, index}
+                            <a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">DAY {workoutdays.length - daysCount - index}</a>  
+                        {/each}
+                    {:else}
+                        <div on:click={previousDays} class='exerciseToAdd narrowDay'>-10</div>
+                        <div on:click={nextDays} class='exerciseToAdd narrowDay'>+10</div>
+                        {#each workoutdays.slice(daysCount+incrementDays*10, daysCount+10+incrementDays*10).reverse() as days, index}
+                            <a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">DAY {workoutdays.length - daysCount - index - incrementDays*10}</a>  
+                        {/each}
+                    {/if}
+                </div>
+            </div>
+        {/if}
     {/if}
 </main>

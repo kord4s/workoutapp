@@ -18,8 +18,11 @@
     import PlanDayAddExerciseAdditionalData from './routes/plan/planDay_addExercise_additionalData.svelte';
     import PlanDayModifyExercise from './routes/plan/planDay_modifyExercise.svelte';
     import PlanDayExerciseDelete from './routes/plan/planDay_exerciseDelete.svelte';
-    import Diet from './routes/diet.svelte';
+    import Diet from './routes/diet/diet.svelte';
     import Header from './lib/header.svelte';
+    import AnotherDay from './routes/diet/anotherDay.svelte';
+    import AddMeal from './routes/diet/addMeal.svelte';
+    import AddProduct from './routes/diet/addProduct.svelte';
     
 
 
@@ -32,7 +35,6 @@
     "/logout" : Logout,
     "/profile" : Profile,
     "/plans" : Plans,
-    /*"/plans/addNextDay" : AddNextDay,*/
     "/plans/create/plan" : PlanCreate,
     "/plans/create/days" : PlanCreateCreateDays,
     "/plans/:workoutPlanId/overview" : PlanOverview,
@@ -44,7 +46,10 @@
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/add/:exerciseId/info" : PlanDayAddExerciseAdditionalData,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/modify/:exerciseId" : PlanDayModifyExercise,
     "/plans/:workoutPlanId/overview/:workoutDayId/exercise/delete/:exerciseId" : PlanDayExerciseDelete,
-    "/diet" : Diet
+    "/diet" : Diet,
+    "/diet/:day/:month/:year" : AnotherDay,
+    "/diet/:calendarDayId/addMeal" : AddMeal,
+    "/diet/:calendarDayId/addProduct" :AddProduct
   }
 </script>
 

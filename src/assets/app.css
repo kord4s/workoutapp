@@ -155,7 +155,7 @@ h1
   padding:1.5% 0 1.5%;
   background-color: rgb(212, 212, 212);
   border-radius: 45px 45px;
-  margin: 15% 10% 0;
+  margin: 5vmin 10% 0;
   width: 80%;
   transition: 0.5s;
 }
@@ -369,6 +369,7 @@ h1
 .narrowest
 {
   width:100% !important;
+  margin:0 !important;
 }
 
 
@@ -541,9 +542,63 @@ h5
   border-radius: 15px;
 }
 
-.exerciseToAdd p
+.planOverview p
 {
+  
+  border-right:1px black solid;
+  box-sizing: border-box;
+  background-color: white;
   text-align: center;
+}
+
+.planOverview p > p
+{
+  border-right:none;
+}
+
+.planOverview
+{
+  display:block;
+  float:left;
+  width:50%;
+  margin:0;
+}
+
+.planOverview a
+{
+  width: 80%;
+  padding: 15px 0;
+  margin: 2.5vh 10% 0 10%;
+  border-radius: 15px;
+  background-color: white;
+  float:left;
+  display:block;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.planOverview a:hover
+{
+  background-color:rgb(160, 160, 160);
+  transition: 0.5s;
+}
+
+.narrowDay
+{
+  width:35% !important;
+  margin:2.5vh 5% 0 10% !important;
+  transition: 0.5s;
+}
+
+.narrowDay:hover
+{
+  background-color:rgb(160, 160, 160);
+  transition: 0.5s;
+}
+
+.narrowDay + .narrowDay
+{
+  margin:2.5vh 10% 0 5% !important;
 }
 
 .radio
@@ -562,6 +617,7 @@ h5
   margin-top:0.3vh;
   margin-left:0.7vw;
 }
+
 
 
 .spinner {
