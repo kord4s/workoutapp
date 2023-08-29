@@ -118,7 +118,6 @@ onMount(async function(){
         if((await gettingMealsResponse).status)
         {
             meals = await(await gettingMealsResponse).json();
-            console.log(meals);
             waiter = 1;
         }
 })
@@ -133,39 +132,45 @@ onMount(async function(){
         <a href="/#/diet/overview/{tomorrow['day']}/{tomorrow['month']+1}/{tomorrow['year']}">NEXT DAY</a>
     </div>
     {#if checker == 1}
-        {#if waiter == 1 && meals.length > 0}
-            <div class='meals'>
-            {#each meals as meal}
-                <div>
-                    <p class='title'>{meal.mealId}</p>
-                    {#each meal.products as product}
-                        <p class='product'>{product.productName}</p>
-                    {/each}
-                    <div class='modalNavigator'>
-                        <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/addProduct'>ADD PRODUCT</a>
-                        <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/modifyMeal'>MODIFY NAME</a>
-                        <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/deleteMeal'>DELETE MEAL</a>
-                    </div>
+    {#if waiter == 1 && meals.length > 0}
+        <div class='meals'>
+        {#each meals as meal}
+            <div>
+                <p class='title'>{meal.mealName}</p>
+                <div class='subtitle'>
+                    <p>protein: {Number(meal.totalProtein).toFixed(2)}g</p>
+                    <p>fat: {Number(meal.totalFat).toFixed(2)}g</p>
+                    <p>carbs: {Number(meal.totalCarbs).toFixed(2)}g</p>
+                    <p>energy: {Number(meal.totalKcal).toFixed(0)}kcal</p>
                 </div>
-            {/each}
+                {#each meal.products as product}
+                    <a class='product' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/{product.productId}/modify'>{product.productName}:{product.productWeight}g:{(product.productWeight*(product.productKcal/100)).toFixed(0)}kcal P:{(product.productWeight*(product.productProtein/100)).toFixed(2)}g F:{(product.productWeight*(product.productFat/100)).toFixed(2)}g C:{(product.productWeight*(product.productCarbs/100)).toFixed(2)}g</a>
+                {/each}
+                <div class='modalNavigator'>
+                    <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/addProduct'>ADD PRODUCT</a>
+                    <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/modifyMeal'>MODIFY NAME</a>
+                    <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/deleteMeal'>DELETE MEAL</a>
+                </div>
             </div>
-        {:else if waiter == 1 && meals.length == 0}
-            <div class="welcome">
-                <h1>DAY IS EMPTY</h1>
-                <h1>ADD SOME MEALS</h1>
-            </div>
-        {/if}
-    {:else if checker == -1}
-        <div class="welcome">
-            <h1>TO PROPERLY USE OUR WEBSITE</h1>
-            <h1>YOU NEED TO SIGN UP OR LOG IN</h1>
-            <h1><a href='/#/register>REGISTER'>REGISTER</a> OR <a href='/#/login'>LOGIN</a></h1>
+        {/each}
         </div>
-    {:else}
-        <div class='container'>
-            <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-            </svg>
+    {:else if waiter == 1 && meals.length == 0}
+        <div class="welcome">
+            <h1>DAY IS EMPTY</h1>
+            <h1>ADD SOME MEALS</h1>
         </div>
     {/if}
+{:else if checker == -1}
+    <div class="welcome">
+        <h1>TO PROPERLY USE OUR WEBSITE</h1>
+        <h1>YOU NEED TO SIGN UP OR LOG IN</h1>
+        <h1><a href='/#/register>REGISTER'>REGISTER</a> OR <a href='/#/login'>LOGIN</a></h1>
+    </div>
+{:else}
+    <div class='container'>
+        <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle name="logout" class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
+    </div>
+{/if}
 </main>

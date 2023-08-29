@@ -14,7 +14,6 @@ async function modifyMeal(e)
     const formData = new FormData(e.target);
     data = Object.fromEntries(formData.entries());
     data = JSON.stringify(data,null,2)
-    console.log(data);
     const updateMealResponse = fetch(`https://localhost:7190/api/${userID}/calendars/${calendarID}/calendardays/${calendarDayID}/meals/${mealID}/edit`,
     {
         body: data,

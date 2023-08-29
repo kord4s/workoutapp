@@ -47,11 +47,11 @@ async function addProductToMeal()
     let data;
     const formData = new FormData();
     formData.append("ProductName", product['productName']);
-    formData.append("ProductKcal", String(kcal));
-    formData.append("ProductWeight", String(weight));
-    formData.append("ProductCarbs", String(carbs));
-    formData.append("ProductFat", String(fat));
-    formData.append("ProductProtein", String(protein));
+    formData.append("ProductKcal", product['productKcal']);
+    formData.append("ProductWeight", weight);
+    formData.append("ProductCarbs", product['productCarbs']);
+    formData.append("ProductFat", product['productFat']);
+    formData.append("ProductProtein", product['productProtein']);
     formData.append("ProductCategoryName", product['productCategoryName']);
     data = Object.fromEntries(formData.entries());
     data = JSON.stringify(data,null,2)

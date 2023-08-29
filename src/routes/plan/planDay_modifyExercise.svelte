@@ -60,7 +60,9 @@ async function tryToAddExercise(e)
 </script>
 
 <main>
-    <h6><a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a></h6>
+    <div class='navigator'>
+        <a class='narrowest' href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a>
+    </div>
     {#if (checker == 0)}
         <div class='container'>
             <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
@@ -68,14 +70,22 @@ async function tryToAddExercise(e)
             </svg>
         </div>
     {:else if (checker==1)}
-    <h1>{exercise['exerciseName']}</h1>
-    <div>{exercise['description']}</div>
-    <form on:submit|preventDefault={tryToAddExercise}>
-        <InputNumber style='' type='number' placeholder='sets' name='NumberOfSeries' min='1' max='' value={exercise['numberOfSeries']}/>
-        <InputNumber style='' type='number' placeholder='repetitions' name='NumberOfRepeats' min='1' max='' value={exercise['numberOfRepeats']}/>
-        <InputNumber style='' type='number' placeholder='load' name='NumberOfLoad' min='0' max='' value={exercise['numberOfLoad']}/>
-        <button>EDIT</button>
-    </form>
+    <div class='addingExercise'>
+        <div class='exerciseContainer'>
+            <fieldset>
+                <legend>{exercise['exerciseName']}</legend>
+                <p>{exercise['description']}</p>
+            </fieldset>
+        </div>
+        <div class='exerciseContainer'>
+            <form on:submit|preventDefault={tryToAddExercise}>
+                <InputNumber style='' type='number' placeholder='sets' name='NumberOfSeries' min='1' max='' value={exercise['numberOfSeries']}/>
+                <InputNumber style='' type='number' placeholder='repetitions' name='NumberOfRepeats' min='1' max='' value={exercise['numberOfRepeats']}/>
+                <InputNumber style='' type='number' placeholder='load' name='NumberOfLoad' min='0' max='' value={exercise['numberOfLoad']}/>
+                <button>EDIT</button>
+            </form>
+         </div>
+    </div>
     {:else if (checker==2)}
         <h1>SUCCESS, REDIRECTING</h1>
         <div class='container'>

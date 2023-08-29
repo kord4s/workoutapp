@@ -32,6 +32,12 @@
 		border-radius: 40px;
 	}
 
+	dialog > div > h5
+	{
+	text-align: center !important;
+	}
+
+
 	dialog::backdrop {
 		background: rgba(0, 0, 0, 0.6);
 		transition: 0.5;

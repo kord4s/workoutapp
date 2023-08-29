@@ -27,10 +27,14 @@
 </script>
 
 <main>
-    <h6><a href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a></h6>
+    <div class='navigator'>
+        <a class='narrowest' href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a>
+    </div>
     {#if checker == -1}
-        <h1> ARE YOU SURE?</h1>
-        <button on:click = {deleteUserExercise}></button>
+        <div class='welcome'>
+            <h1> ARE YOU SURE?</h1>
+            <button on:click = {deleteUserExercise}>DELETE EXERCISE</button>
+        </div>
     {:else}
         <div class='container'>
             <svg class="spinner" style="margin-top:10vw" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">

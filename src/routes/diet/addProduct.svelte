@@ -10,6 +10,7 @@ let showModal = false;
 let clicked = -1;
 let checker = -1;
 let userSelected;
+let incrementProducts=0;
 onMount(async function(){
     let token = 'Bearer '+sessionStorage.getItem("token");
     let userID = sessionStorage.getItem("userID");
@@ -26,7 +27,6 @@ onMount(async function(){
     if((await getCategoriesResponse).ok)
     {
         categories = await(await getCategoriesResponse).json();
-        console.log(categories);
     }
 })
 
@@ -65,9 +65,25 @@ function showModalOnce(exerciseId)
     showModal=true;
     clicked = exerciseId;
 }
+
+function increment()
+{
+    if((incrementProducts+1)*10 < products.length)
+    incrementProducts++;
+}
+
+function decrement()
+{
+    if(incrementProducts>0)
+        incrementProducts--;
+}
+
 </script>
 
 <main>
+    <div class='navigator'>
+        <a class='narrowest' href='/#/diet/decodeCalendarDay/{calendarID}/{calendarDayID}'>BACK</a>
+    </div>
     <div class='addingExercise'>
         <div class='exerciseContainer'>
             <form>
@@ -85,24 +101,47 @@ function showModalOnce(exerciseId)
         <div class='exerciseContainer'>
             {#if checker==1}
                 <div class='exerciseToAdd'>
-                    <a href='/#/diet/{calendarID}/{calendarDayID}/{mealID}/addProduct/newProduct'>ADD NEW PRODUCT</a>
-                </div> 
-                {#each products as product}
-                <div class='exerciseToAdd' on:click={() => (showModalOnce(product.productId))}>
-                <!-- svelte-ignore a11y-click-events-have-key-events -->
-                <p >{product.productName}<p>
-                <Modal bind:showModal bind:clicked bind:exerciseId={product.productId}>
-                    <h2>{product.productName}</h2>
-                    <h5>kcal: {product.productKcal}</h5>
-                    <h5>protein: {product.productProtein}</h5>
-                    <h5>carbs: {product.productCarbs}</h5>
-                    <h5>fats: {product.productFat}</h5>
-                    <div class='modalNavigator'>
-                        <a class='narrowest' href='/#/diet/{calendarID}/{calendarDayID}/{mealID}/addProduct/{product.productId}/additionalData'>ADD TO MEAL</a>
-                    </div>
-                </Modal>
+                    <a href='/#/diet/{calendarID}/{calendarDayID}/{mealID}/addProduct/newProduct/{categories[userSelected].productCategoryName}'>ADD NEW PRODUCT</a>
                 </div>
-            {/each}
+                {#if products.length<10} 
+                    {#each products as product}
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <div class='exerciseToAdd' on:click={() => (showModalOnce(product.productId))}>
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <p >{product.productName}<p>
+                            <Modal bind:showModal bind:clicked bind:exerciseId={product.productId}>
+                                <h2>{product.productName}</h2>
+                                <h5 class='productModal'>kcal: {product.productKcal}</h5>
+                                <h5>protein: {product.productProtein}</h5>
+                                <h5>carbs: {product.productCarbs}</h5>
+                                <h5>fats: {product.productFat}</h5>
+                                <div class='modalNavigator'>
+                                    <a class='narrowest' href='/#/diet/{calendarID}/{calendarDayID}/{mealID}/addProduct/{product.productId}/additionalData'>ADD TO MEAL</a>
+                                </div>
+                            </Modal>
+                        </div>
+                    {/each}
+                {:else}
+                    {#each products.slice(10*incrementProducts, 10*(incrementProducts+1)) as product}
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <div class='exerciseToAdd' on:click={() => (showModalOnce(product.productId))}>
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <p >{product.productName}<p>
+                            <Modal bind:showModal bind:clicked bind:exerciseId={product.productId}>
+                                <h2>{product.productName}</h2>
+                                <h5>kcal: {product.productKcal}</h5>
+                                <h5>protein: {product.productProtein}</h5>
+                                <h5>carbs: {product.productCarbs}</h5>
+                                <h5>fats: {product.productFat}</h5>
+                                <div class='modalNavigator'>
+                                    <a class='narrowest' href='/#/diet/{calendarID}/{calendarDayID}/{mealID}/addProduct/{product.productId}/additionalData'>ADD TO MEAL</a>
+                                </div>
+                            </Modal>
+                        </div>
+                    {/each}
+                    <button class='narrowButton' on:click={decrement}>PREVIOUS PAGE</button>
+                    <button class='narrowButton' on:click={increment}>NEXT PAGE</button>
+                {/if}
             {/if}
         </div>
     </div>

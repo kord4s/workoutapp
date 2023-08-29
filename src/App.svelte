@@ -60,7 +60,7 @@
     "/diet/:calendarId/:calendarDayId/:mealId/addProduct" :AddProduct,
     "/diet/:calendarId/:calendarDayId/:mealId/addProduct/:productId/additionalData" : AddProductAdditionalData,
     "/diet/:calendarId/:calendarDayId/:mealId/:productId/modify" : ModifyProduct,
-    "/diet/:calendarId/:calendarDayId/:mealId/addProduct/newProduct" : NewProduct,
+    "/diet/:calendarId/:calendarDayId/:mealId/addProduct/newProduct/:categoryName" : NewProduct,
     "/diet/decodeCalendarDay/:calendarId/:calendarDayId" : DecodeData
   }
 </script>

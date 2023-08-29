@@ -160,7 +160,9 @@ function previousDays()
                             <a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">DAY {workoutdays.length - daysCount - index}</a>  
                         {/each}
                     {:else}
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
                         <div on:click={previousDays} class='exerciseToAdd narrowDay'>-10</div>
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
                         <div on:click={nextDays} class='exerciseToAdd narrowDay'>+10</div>
                         {#each workoutdays.slice(daysCount+incrementDays*10, daysCount+10+incrementDays*10).reverse() as days, index}
                             <a href="/#/plans/{workoutPlanID}/overview/{days.workoutDayId}">DAY {workoutdays.length - daysCount - index - incrementDays*10}</a>  

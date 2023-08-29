@@ -172,13 +172,13 @@ function reloadData()
                 <div>
                     <p class='title'>{meal.mealName}</p>
                     <div class='subtitle'>
-                        <p>protein: {meal.totalProtein}g</p>
-                        <p>fat: {meal.totalFat}g</p>
-                        <p>carbs: {meal.totalCarbs}g</p>
-                        <p>energy: {meal.totalKcal}kcal</p>
+                        <p>protein: {Number(meal.totalProtein).toFixed(2)}g</p>
+                        <p>fat: {Number(meal.totalFat).toFixed(2)}g</p>
+                        <p>carbs: {Number(meal.totalCarbs).toFixed(2)}g</p>
+                        <p>energy: {Number(meal.totalKcal).toFixed(0)}kcal</p>
                     </div>
                     {#each meal.products as product}
-                        <a class='product' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/{product.productId}/modify'>{product.productName}:{product.productWeight}g P:{product.productProtein}g F:{product.productFat}g C:{product.productCarbs}g</a>
+                        <a class='product' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/{product.productId}/modify'>{product.productName}:{product.productWeight}g:{(product.productWeight*(product.productKcal/100)).toFixed(0)}kcal P:{(product.productWeight*(product.productProtein/100)).toFixed(2)}g F:{(product.productWeight*(product.productFat/100)).toFixed(2)}g C:{(product.productWeight*(product.productCarbs/100)).toFixed(2)}g</a>
                     {/each}
                     <div class='modalNavigator'>
                         <a class='evenMoreNarrower' href='/#/diet/{calendarID}/{calendarDayID}/{meal.mealId}/addProduct'>ADD PRODUCT</a>
