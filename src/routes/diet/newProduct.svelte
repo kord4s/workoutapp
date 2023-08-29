@@ -1,5 +1,6 @@
 <script>
-    import Input from "../../lib/input.svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
+import Input from "../../lib/input.svelte";
     import InputNumber from "../../lib/input_number.svelte";
     import InputRealnumber from "../../lib/input_realnumber.svelte";
 
@@ -43,6 +44,7 @@ async function createNewProduct(e)
 </script>
 
 <main>
+    <CheckIfLogged/>
     <div class='navigator'>
         <a class='narrowest' href='/#/diet/{calendarID}/{calendarDayID}/{mealID}/addProduct'>BACK</a>
     </div>

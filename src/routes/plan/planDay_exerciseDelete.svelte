@@ -1,4 +1,6 @@
 <script>
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
+
     let checker = -1;
     export let params = {}
     let workoutPlanID = params.workoutPlanId;
@@ -27,6 +29,7 @@
 </script>
 
 <main>
+    <CheckIfLogged/>
     <div class='navigator'>
         <a class='narrowest' href='/#/plans/{workoutPlanID}/overview/{workoutDayId}'>BACK</a>
     </div>

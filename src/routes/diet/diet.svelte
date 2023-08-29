@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
 let checker;
 let calendarID;
 let date = new Date();

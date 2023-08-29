@@ -1,5 +1,6 @@
 <script>
-    import Input from "../../lib/input.svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
+import Input from "../../lib/input.svelte";
     let data = {}, emailChecker=0, passwordChecker=0, userID = sessionStorage.getItem("userID"), whichToChange;
 
 
@@ -91,6 +92,7 @@
 </script>
 
 <main>
+    <CheckIfLogged/>
     <form class='account' on:submit={changeUserData}>
         <h1>CHANGE EMAIL</h1>
         <Input name="email" type="email" placeholder='NEW EMAIL' style=''/>

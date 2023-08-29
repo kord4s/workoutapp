@@ -1,4 +1,6 @@
 <script>
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
+
     export let params = {}
     let workoutPlanID = params.workoutPlanId;
     let deleted_check = 0;
@@ -30,6 +32,7 @@
 </script>
 
 <main>
+    <CheckIfLogged/>
     <div class='navigator'>
         <a class='narrowest' href='/#/plans/'>BACK</a>
     </div>

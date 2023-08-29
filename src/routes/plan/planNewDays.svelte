@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import Modal from "../../lib/modal.svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
 
 export let params = {}
 let workoutPlanID = params.workoutPlanId;
@@ -157,6 +158,7 @@ async function tryToAddNewDay()
 </script>
 
 <main>
+    <CheckIfLogged/>
     <div class='navigator'>
         <a class='narrowest' href='/#/plans/{workoutPlanID}/overview'>BACK</a>
     </div>

@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import Modal from "../../lib/modal.svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
 
 export let params = {};
 let exercises = [];
@@ -43,6 +44,7 @@ function showModalOnce(exerciseId)
 
 
 <main>
+    <CheckIfLogged/>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class='navigator'>
     <a href='/#/plans/{workoutPlanID}/overview'>BACK</a>

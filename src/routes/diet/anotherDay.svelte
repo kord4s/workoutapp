@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import { push } from "svelte-spa-router";
     import AddProduct from "./addProduct.svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
     export let params = {}
 
 $: if(params.day)
@@ -160,6 +161,7 @@ function reloadData()
 </script>
 
 <main>
+    <CheckIfLogged/>
     <div class='navigator'>
         <a href="/#/diet/overview/{yesterday['day']}/{yesterday['month']+1}/{yesterday['year']}">PREVIOUS DAY</a>
         <a href='/#/diet/{calendarID}/{calendarDayID}/addMeal'>ADD NEXT MEAL</a>

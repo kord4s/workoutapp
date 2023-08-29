@@ -1,6 +1,7 @@
 <script>
     export let params = {}
     import { onMount } from "svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
     
 let calendarDayID = params.calendarDayId;
 let calendarID = params.calendarId;
@@ -74,6 +75,7 @@ async function addProductToMeal()
 </script>
 
 <main>
+    <CheckIfLogged/>
     <div class='navigator'>
         <a class='narrowest' href='/#/diet/{calendarID}/{calendarDayID}/{mealID}/addProduct'>BACK</a>
     </div>

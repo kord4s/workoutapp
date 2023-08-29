@@ -1,5 +1,6 @@
 <script>
 import { onMount } from "svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
 export let params = {}
 let workoutPlanID = params.workoutPlanId;
 let workoutdays=[];
@@ -124,6 +125,7 @@ function previousDays()
 </script>
 
 <main>
+    <CheckIfLogged/>
     {#if isPrefered == true || isPrefered == false}
         <div class='navigator'>
         <a href='/#/plans' class='wider'>BACK</a>

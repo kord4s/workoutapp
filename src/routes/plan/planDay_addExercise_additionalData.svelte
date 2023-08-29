@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import InputNumber from "../../lib/input_number.svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
 
 
 export let params = {}
@@ -80,6 +81,7 @@ async function tryToAddExercise(e)
 </script>
 
 <main>
+    <CheckIfLogged/>
     <div class='navigator'>
         <a class='narrowest' href='/#/plans/{workoutPlanID}/overview/{workoutDayId}/exercise/add'>BACK</a>
     </div>

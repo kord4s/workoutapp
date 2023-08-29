@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
     let WPCount=-1;
     let WorkoutPlans=[];
     let waiter = 0;

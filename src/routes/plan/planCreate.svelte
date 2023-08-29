@@ -1,4 +1,6 @@
 <script>
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
+
     let counter, daysChecker=false, name;
 
     function submitDays()
@@ -11,6 +13,7 @@
 </script>
 
 <main>
+    <CheckIfLogged/>
     <div class='navigator'>
         <a class='narrowest' href='/#/plans/'>BACK</a>
     </div>

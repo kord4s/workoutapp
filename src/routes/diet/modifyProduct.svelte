@@ -1,5 +1,6 @@
 <script>
-    import Input from "../../lib/input.svelte";
+    import CheckIfLogged from "../../lib/checkIfLogged.svelte";
+import Input from "../../lib/input.svelte";
     import { onMount } from "svelte";
     export let params = {}
 let calendarDayID = params.calendarDayId;
@@ -102,6 +103,7 @@ async function deleteProduct(){
 </script>
 
 <main>
+    <CheckIfLogged/>
     <div class='navigator'>
         <a class='narrowest' href='/#/diet/decodeCalendarDay/{calendarID}/{calendarDayID}'>BACK</a>
     </div>
