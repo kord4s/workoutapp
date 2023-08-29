@@ -35,7 +35,6 @@
 
   const routes = {
     "/" : Index,
-    "/404" : Error,
     "/register" : Register,
     "/login" : Login,
     "/logout" : Logout,
@@ -61,7 +60,8 @@
     "/diet/:calendarId/:calendarDayId/:mealId/addProduct/:productId/additionalData" : AddProductAdditionalData,
     "/diet/:calendarId/:calendarDayId/:mealId/:productId/modify" : ModifyProduct,
     "/diet/:calendarId/:calendarDayId/:mealId/addProduct/newProduct/:categoryName" : NewProduct,
-    "/diet/decodeCalendarDay/:calendarId/:calendarDayId" : DecodeData
+    "/diet/decodeCalendarDay/:calendarId/:calendarDayId" : DecodeData,
+    "*" : Error
   }
 </script>
 

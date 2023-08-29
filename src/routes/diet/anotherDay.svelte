@@ -17,7 +17,6 @@ let day, month, year;
 day = params.day;
 month = params.month;
 year = params.year;
-console.log(window.location.href);
 let checker;
 let calendarID;
 let date = new Date();
@@ -26,7 +25,6 @@ let calendarDayID;
 let meals = []
 let waiter
 let dataString
-console.log("test");
 
 async function getMeals(){
     reloadData();
@@ -34,7 +32,6 @@ async function getMeals(){
     let userID = sessionStorage.getItem("userID");
     let dataJSON = {calendarDate : currentDate}
     dataString = JSON.stringify(dataJSON);
-    console.log(dataString);
         if(sessionStorage.getItem("userID") === null)
         {
             checker = -1;
@@ -105,7 +102,6 @@ async function getMeals(){
             if((await creatingCalendarDaysResponse).status)
             {
                 calendarDayID = await(await creatingCalendarDaysResponse).json();
-                console.log(calendarDayID);
             }} 
         catch(e) {
             const gettingCalendarDayIdResponse = fetch("https://localhost:7190/api/"+userID+"/calendars/"+calendarID+"/calendardays/getByDate/"+currentDate,
@@ -154,7 +150,6 @@ function reloadData()
     yesterday = {day : date.getDate(), month : date.getMonth(), year : date.getFullYear() };
     date.setDate(date.getDate()+2);
     tomorrow = {day : date.getDate(), month : date.getMonth(), year : date.getFullYear() };
-    console.log(yesterday, currentDate, tomorrow);
     date.setDate(date.getDate()-1);
 }
 

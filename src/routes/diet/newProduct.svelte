@@ -23,7 +23,6 @@ async function createNewProduct(e)
     formData.append("ProductWeight", "0");
     data = Object.fromEntries(formData.entries());
     data = JSON.stringify(data,null,2)
-    console.log(data);
     const addingNewProduct = fetch(`https://localhost:7190/api/${userID}/calendars/${calendarID}/calendardays/${calendarDayID}/meals/${mealID}/products/create/template`,
     {
         body: data,

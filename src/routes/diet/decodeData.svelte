@@ -22,7 +22,6 @@
             {
                 calendarDayID = await(await gettingCalendarDaysResponse).json();
                 stringDate = calendarDayID['calendarDate'];
-                console.log(stringDate);
                 let counter=0;
                 for(let i=0; i<stringDate.length; i++)
                 {
@@ -48,7 +47,6 @@
                         counter++;
                     }
                 }
-                console.log(decodedYear);
                 location.replace(`/#/diet/overview/${decodedDay}/${decodedMonth}/${decodedYear}`);
             }
     })
